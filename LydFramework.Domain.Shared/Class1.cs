@@ -1,0 +1,7 @@
+﻿namespace LydFramework.Domain.Shared
+{
+    public class Class1
+    {
+
+    }
+}

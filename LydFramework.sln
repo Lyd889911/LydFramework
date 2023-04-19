@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Application", "LydFramework.Application\LydFramework.Application.csproj", "{79296AF9-3A3A-47CA-9E08-D8C35A656B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Domain", "LydFramework.Domain\LydFramework.Domain.csproj", "{609F4239-FE2C-4BE7-9282-01FBB93537DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Tools", "LydFramework.Tools\LydFramework.Tools.csproj", "{63A39F42-F919-4BD7-A072-96C570010301}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Infrastructure", "LydFramework.Infrastructure\LydFramework.Infrastructure.csproj", "{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.EFCore.SqlServer", "LydFramework.EFCore.SqlServer\LydFramework.EFCore.SqlServer.csproj", "{911FA27E-C2A6-4643-913A-E10DAA4B873D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Domain.Shared", "LydFramework.Domain.Shared\LydFramework.Domain.Shared.csproj", "{D31B396F-A146-4215-968C-08540A5DFB2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.DbMigration", "LydFramework.DbMigration\LydFramework.DbMigration.csproj", "{E1AD0173-13D2-41CD-96EF-4884936372E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79296AF9-3A3A-47CA-9E08-D8C35A656B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79296AF9-3A3A-47CA-9E08-D8C35A656B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79296AF9-3A3A-47CA-9E08-D8C35A656B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79296AF9-3A3A-47CA-9E08-D8C35A656B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{609F4239-FE2C-4BE7-9282-01FBB93537DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{609F4239-FE2C-4BE7-9282-01FBB93537DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{609F4239-FE2C-4BE7-9282-01FBB93537DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{609F4239-FE2C-4BE7-9282-01FBB93537DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63A39F42-F919-4BD7-A072-96C570010301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A39F42-F919-4BD7-A072-96C570010301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A39F42-F919-4BD7-A072-96C570010301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A39F42-F919-4BD7-A072-96C570010301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{911FA27E-C2A6-4643-913A-E10DAA4B873D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{911FA27E-C2A6-4643-913A-E10DAA4B873D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{911FA27E-C2A6-4643-913A-E10DAA4B873D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{911FA27E-C2A6-4643-913A-E10DAA4B873D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31B396F-A146-4215-968C-08540A5DFB2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31B396F-A146-4215-968C-08540A5DFB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31B396F-A146-4215-968C-08540A5DFB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31B396F-A146-4215-968C-08540A5DFB2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1AD0173-13D2-41CD-96EF-4884936372E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1AD0173-13D2-41CD-96EF-4884936372E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1AD0173-13D2-41CD-96EF-4884936372E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1AD0173-13D2-41CD-96EF-4884936372E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD78597E-1BEB-4562-B008-73D2E368D7E7}
+	EndGlobalSection
+EndGlobal
