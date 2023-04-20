@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Domain.Shared.Base
+namespace LydFramework.Domain.Shared.BaseEntity
 {
     public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreate<TKey>, IHasModify<TKey>, IHasDelete<TKey>
     {
@@ -16,9 +16,17 @@ namespace LydFramework.Domain.Shared.Base
         public TKey? ModifyBy { get; protected set; }
         public DateTime? ModifyTime { get; protected set; }
 
-        protected AggregateRoot()
+        protected AggregateRoot(TKey id):base(id)
         {
-
+            CreateTime = DateTime.Now;
+            ModifyTime = DateTime.Now;
+        }
+        protected AggregateRoot(TKey id ,TKey createId):base(id)
+        {
+            CreateTime = DateTime.Now;
+            CreateBy = createId;
+            ModifyTime = DateTime.Now;
+            ModifyBy = createId;
         }
     }
 }

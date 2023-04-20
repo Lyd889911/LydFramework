@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Domain.Shared.Base
+namespace LydFramework.Domain.Shared.BaseEntity
 {
     public abstract class Entity<TKey> : IEntity<TKey>
     {
