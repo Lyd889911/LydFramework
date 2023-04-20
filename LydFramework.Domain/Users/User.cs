@@ -1,4 +1,5 @@
-﻿using LydFramework.Domain.Shared.BaseEntity;
+﻿using LydFramework.Domain.Roles;
+using LydFramework.Domain.Shared.BaseEntity;
 using LydFramework.Tools;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace LydFramework.Domain.Users
         public string PasswordHash { get; set; }
         public UserStatus Status { get; set; }
         public UserAccessFail UserAccessFail { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
         public User(string userName,string password) : base(Guid.NewGuid())
         {
             UserName = userName;

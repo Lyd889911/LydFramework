@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LydFramework.Domain.Roles;
+using LydFramework.Domain.Shared.BaseEntity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,36 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain.Menus
 {
-    public class Menu
+    public class Menu:AggregateRoot<Guid>
     {
+        /// <summary>
+        /// 标题
+        /// </summary>
+        public string Title { get; set; }
+        /// <summary>
+        /// 图标
+        /// </summary>
+        public string Icon { get; set; }
+        /// <summary>
+        /// 路由
+        /// </summary>
+        public string Path { get; set; }
+        /// <summary>
+        /// 层级
+        /// </summary>
+        public int Level { get; set; }
+        /// <summary>
+        /// 上级Id
+        /// </summary>
+        public Guid? ParentId { get; set; }
+
+        public ICollection<RoleMenu> RoleMenus { get; set; }
+        public Menu(string title,string icon,int level,Guid? parentId):base(Guid.NewGuid())
+        {
+            Title = title;
+            Icon = icon;
+            Level = level;
+            ParentId = parentId;
+        }
     }
 }
