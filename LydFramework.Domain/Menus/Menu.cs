@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain.Menus
 {
-    public class Menu:AggregateRoot<Guid>
+    public class Menu:AggregateRoot
     {
         /// <summary>
         /// 标题
@@ -32,12 +32,22 @@ namespace LydFramework.Domain.Menus
         public Guid? ParentId { get; set; }
 
         public ICollection<RoleMenu> RoleMenus { get; set; }
-        public Menu(string title,string icon,int level,Guid? parentId):base(Guid.NewGuid())
+        public Menu(string title,string icon,string path,int level,Guid? parentId)
         {
             Title = title;
+            Path = path;
             Icon = icon;
             Level = level;
             ParentId = parentId;
+        }
+        public void Update(string title,string icon,string path,int level,Guid? parentId)
+        {
+            Title = title;
+            Icon = icon;
+            Path = path;
+            Level = level;
+            ParentId = parentId;
+            ModifyTime = DateTime.Now;
         }
     }
 }

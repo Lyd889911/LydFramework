@@ -8,15 +8,21 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain.Roles
 {
-    public class Role:AggregateRoot<Guid>
+    public class Role:AggregateRoot
     {
         public string Name { get; set; }
 
-        public ICollection<UserRole> UserRoles { get; set; }
-        public ICollection<RoleMenu> RoleMenus { get; set; }
-        public Role(string name):base(Guid.NewGuid())
+        public List<UserRole> UserRoles { get; set; }
+        public List<RoleMenu> RoleMenus { get; set; }
+        public Role(string name)
         {
             Name = name;
+            UserRoles = new List<UserRole>();
+            RoleMenus = new List<RoleMenu>();
+        }
+        private Role()
+        {
+
         }
 
     }

@@ -9,19 +9,23 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain.Users
 {
-    public class User : AggregateRoot<Guid>
+    public class User : AggregateRoot
     {
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
         public UserStatus Status { get; set; }
         public UserAccessFail UserAccessFail { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
-        public User(string userName,string password) : base(Guid.NewGuid())
+        public User(string userName,string password)
         {
             UserName = userName;
             PasswordHash = HashHelper.ComputeMd5Hash(password);
             Status = UserStatus.Normal;
             UserAccessFail = new UserAccessFail(this);
+        }
+        private User()
+        {
+
         }
         public bool HasPassword()
         {

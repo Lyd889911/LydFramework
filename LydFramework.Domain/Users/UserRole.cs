@@ -22,5 +22,9 @@ namespace LydFramework.Domain.Users
             Role = role;
             RoleId= role.Id;
         }
+        private UserRole()
+        {
+
+        }
     }
 }

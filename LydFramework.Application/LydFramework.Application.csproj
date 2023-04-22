@@ -7,11 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Folder Include="Controllers\Roles\" />
+    <Folder Include="Controllers\Users\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\LydFramework.Domain\LydFramework.Domain.csproj" />
+    <ProjectReference Include="..\LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj" />
   </ItemGroup>
 
 </Project>

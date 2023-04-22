@@ -1,12 +1,4 @@
-﻿using LydFramework.Domain.Menus;
-using LydFramework.Domain.Roles;
-using LydFramework.Domain.Users;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace LydFramework.EFCore.MySql.DbContexts
 {

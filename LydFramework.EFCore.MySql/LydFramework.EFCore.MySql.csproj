@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositorys\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\LydFramework.Domain\LydFramework.Domain.csproj" />
   </ItemGroup>
 
