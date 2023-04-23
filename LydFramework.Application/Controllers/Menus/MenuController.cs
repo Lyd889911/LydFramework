@@ -40,7 +40,7 @@ namespace LydFramework.Application.Controllers.Menus
             {
                 if (menuDto.ParentId != null)
                 {
-                    var parent = treeMenu.FirstOrDefault(x => x.ParentId == menuDto.Id);
+                    var parent = treeMenu.FirstOrDefault(x => x.Id == menuDto.ParentId);
                     if (parent != null)
                         parent.ChildMenus.Add(menuDto);
                 }

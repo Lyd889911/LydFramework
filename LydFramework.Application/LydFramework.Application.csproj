@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Roles\" />
     <Folder Include="Controllers\Users\" />
   </ItemGroup>
 
