@@ -26,7 +26,7 @@ namespace LydFramework.Application.Controllers.Roles
         //添加角色
         [HttpPost]
         [UnitOfWork(typeof(LydDbContext))]
-        public async Task<string> Create(AddRoleDto dto)
+        public async Task<RoleDto> Create(AddRoleDto dto)
         {
             List<Menu> menuList = new List<Menu>();
             Role role = new Role(dto.RoleName);
@@ -40,13 +40,27 @@ namespace LydFramework.Application.Controllers.Roles
                 }
             }
             role = await _roleRepository.AddAsync(role);
-            return "添加成功";
+            return _mapper.Map<RoleDto>(role);
         }
 
         //更新角色
         [HttpPut]
-        public async Task Update()
+        public async Task Update(UpdateRoleDto dto)
         {
+            var role = await _roleRepository.FirstAsync(x=>x.Id == dto.Id);
+            role.Name = dto.Name;
+            if(dto.MenuIds != null)
+            {
+                foreach (var mid in dto.MenuIds)
+                {
+                    var roleMenu = role.RoleMenus.FirstOrDefault(x => x.MenuId == mid);
+                    if(roleMenu != null)
+                    {
+
+                    }
+                }
+            }
+
 
         }
 

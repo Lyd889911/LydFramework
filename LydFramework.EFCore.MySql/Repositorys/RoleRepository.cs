@@ -20,6 +20,12 @@ namespace LydFramework.EFCore.MySql.Repositorys
             return result.Entity;
         }
 
+        public Task<Role> FirstAsync(Expression<Func<Role, bool>> predicate)
+        {
+            var role = _dbContext.Roles.FirstAsync(predicate);
+            return role;
+        }
+
         public IQueryable<Role> ListAll()
         {
             return _dbContext.Roles.AsQueryable<Role>();
