@@ -5,7 +5,9 @@ namespace LydFramework.EFCore.MySql.DbContexts
     public class LydDbContext:DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<RoleMenu> RoleMenu { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public LydDbContext(DbContextOptions<LydDbContext> options) : base(options)
         {

@@ -9,7 +9,7 @@ namespace LydFramework.Application.AutoMapperProfiles
         public RoleMapperProfile()
         {
             CreateMap<Role,RoleDto>()
-                .ForMember(dest => dest.MenuCount, opt => opt.MapFrom(src => src.RoleMenus.Count()));
+                .ForMember(dest => dest.MenuIds, opt => opt.MapFrom(src => src.RoleMenus.Select(x=>x.MenuId).ToList()));
         }
     }
 }

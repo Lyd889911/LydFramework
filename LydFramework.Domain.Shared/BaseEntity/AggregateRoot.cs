@@ -20,6 +20,11 @@ namespace LydFramework.Domain.Shared.BaseEntity
             CreateTime = DateTime.Now;
             ModifyTime = DateTime.Now;
         }
+        public void Delete()
+        {
+            DeleteTime = DateTime.Now;
+            IsDeleted = true;
+        }
     }
 
     public abstract class AggregateRoot<TKey> : Entity<TKey>, IHasCreate<TKey>, IHasModify<TKey>, IHasDelete<TKey>
