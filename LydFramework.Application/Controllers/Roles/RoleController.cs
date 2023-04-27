@@ -5,13 +5,16 @@ using LydFramework.Domain.Menus;
 using LydFramework.Domain.Roles;
 using LydFramework.Domain.Shared.Attributes;
 using LydFramework.EFCore.MySql.DbContexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace LydFramework.Application.Controllers.Roles
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize(Roles = "管理员")]
     public class RoleController : ControllerBase
     {
         private readonly IRoleRepository _roleRepository;

@@ -14,7 +14,10 @@ namespace LydFramework.Domain.Users
         private bool isLockOut;
         public DateTime? LockEnd { get; private set; }
         public int AccessFailCount { get; private set; }
-        private UserAccessFail() { }
+        private UserAccessFail() 
+        { 
+            
+        }
         public UserAccessFail(User user)
         {
             this.Id = Guid.NewGuid();
@@ -41,6 +44,8 @@ namespace LydFramework.Domain.Users
         //判断用户是否被锁定
         public bool IsLockOut()
         {
+            if(AccessFailCount >= 3)
+                isLockOut = true;
             if (this.isLockOut)
             {
                 if (DateTime.Now > this.LockEnd)//超过锁定时间

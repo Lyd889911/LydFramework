@@ -28,7 +28,10 @@ namespace LydFramework.EFCore.MySql.Repositorys
 
         public Task<User> FirstAsync(Expression<Func<User, bool>> predicate)
         {
-            return _dbContext.Users.Include(x=>x.UserRoles).FirstAsync(predicate);
+            return _dbContext.Users
+                .Include(x=>x.UserRoles)
+                .Include(x=>x.UserAccessFail)
+                .FirstAsync(predicate);
         }
 
         public IQueryable<User> ListAll()

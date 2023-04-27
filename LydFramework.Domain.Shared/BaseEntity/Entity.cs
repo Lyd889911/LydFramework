@@ -12,6 +12,12 @@ namespace LydFramework.Domain.Shared.BaseEntity
 
         protected Entity()
         {
+            #region 不同的主键生成策略
+            if (typeof(TKey) == typeof(Guid))
+            {
+                Id = Guid.NewGuid() as TKey;
+            }
+            #endregion
         }
 
         public TKey Id { get; protected set; }

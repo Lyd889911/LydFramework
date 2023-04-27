@@ -4,8 +4,11 @@ using LydFramework.Domain.Roles;
 using LydFramework.Domain.Shared.Attributes;
 using LydFramework.Domain.Users;
 using LydFramework.EFCore.MySql.DbContexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
+using System.Security.Claims;
 
 namespace LydFramework.Application.Controllers.Users
 {
@@ -26,8 +29,10 @@ namespace LydFramework.Application.Controllers.Users
         //添加用户
         [HttpPost]
         [UnitOfWork(typeof(LydDbContext))]
+        [Authorize(Roles = "管理员")]
         public async Task<UserDto> Create(AddUserDto dto)
         {
+            string id = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             User user = new User(dto.UserName, dto.Password);
             if (dto.RoleIds != null)
             {
@@ -46,8 +51,10 @@ namespace LydFramework.Application.Controllers.Users
         //修改用户信息
         [HttpPut]
         [UnitOfWork(typeof(LydDbContext))]
+        [Authorize(Roles = "管理员,普通用户")]
         public async Task<UserDto> Update(UpdateUsetDto dto)
         {
+            string uid = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var user = await _userRepository.FirstAsync(x => x.Id == dto.Id);
             user.UserName = dto.UserName;
             user.SetPassword(dto.Password);
@@ -56,8 +63,9 @@ namespace LydFramework.Application.Controllers.Users
         }
 
         //更新用户角色
-        [HttpPatch]
+        [HttpPatch("role")]
         [UnitOfWork(typeof(LydDbContext))]
+        [Authorize(Roles = "管理员")]
         public async Task<UserDto> PatchRole(PatchRoleUserDto dto)
         {
             var user = await _userRepository.FirstAsync(x => x.Id == dto.Id);
@@ -91,8 +99,9 @@ namespace LydFramework.Application.Controllers.Users
         }
 
         //更新用户状态
-        [HttpPatch]
+        [HttpPatch("status")]
         [UnitOfWork(typeof(LydDbContext))]
+        [Authorize(Roles = "管理员")]
         public async Task<UserDto> PatchStatus(PatchStatusUserDto dto)
         {
             var user = await _userRepository.FirstAsync(x => x.Id == dto.Id);
@@ -100,10 +109,10 @@ namespace LydFramework.Application.Controllers.Users
             var userDto = _mapper.Map<UserDto>(user);
             return userDto;
         }
-
         //删除用户
         [HttpDelete("{Id}")]
         [UnitOfWork(typeof(LydDbContext))]
+        [Authorize(Roles = "管理员")]
         public async Task Delete([FromRoute]Guid Id)
         {
             var user = await _userRepository.FirstAsync(x => x.Id == Id);

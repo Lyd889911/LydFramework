@@ -3,6 +3,7 @@ using LydFramework.Application.Controllers.Menus.Dtos;
 using LydFramework.Domain.Menus;
 using LydFramework.Domain.Shared.Attributes;
 using LydFramework.EFCore.MySql.DbContexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace LydFramework.Application.Controllers.Menus
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize(Roles = "管理员")]
     public class MenuController : ControllerBase
     {
         private readonly IMenuRepository _menuRepository;
@@ -25,6 +27,7 @@ namespace LydFramework.Application.Controllers.Menus
         [UnitOfWork(typeof(LydDbContext))]
         public async Task<MenuDto> Create(AddMenuDto dto)
         {
+            var uid = this.User.Identity;
             Menu menu = new Menu(dto.Title, dto.Icon,dto.Path, dto.Level, dto.ParentId);
             menu = await _menuRepository.AddAsync(menu);
             return _mapper.Map<MenuDto>(menu);

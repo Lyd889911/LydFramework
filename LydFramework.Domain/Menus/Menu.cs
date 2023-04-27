@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain.Menus
 {
-    public class Menu:AggregateRoot
+    public class Menu:AggregateRoot<Guid>
     {
         /// <summary>
         /// 标题
