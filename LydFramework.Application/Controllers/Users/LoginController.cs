@@ -20,12 +20,12 @@ namespace LydFramework.Application.Controllers.Users
         private readonly IRoleRepository _roleRepository;
         private readonly IMapper _mapper;
         private readonly JWT _jwt;
-        private readonly Domain.Shared.IdentityUser<Guid> _identityUser;
+        private readonly Domain.Shared.IdentityUser<long?> _identityUser;
         public LoginController(IUserRepository userRepository, 
             IRoleRepository roleRepository, 
             IMapper mapper,
             JWT jwt,
-            Domain.Shared.IdentityUser<Guid> identityUser)
+            Domain.Shared.IdentityUser<long?> identityUser)
         {
             _mapper = mapper;
             _userRepository = userRepository;

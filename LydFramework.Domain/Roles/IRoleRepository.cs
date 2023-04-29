@@ -17,6 +17,6 @@ namespace LydFramework.Domain.Roles
 
         Task<Role> AddAsync(Role role);
         Task<RoleMenu> AddMenuAsync(RoleMenu roleMenu);
-        Task<Role> FirstAsync(Expression<Func<Role, bool>> predicate);
+        Task<Role?> FirstAsync(Expression<Func<Role, bool>> predicate);
     }
 }

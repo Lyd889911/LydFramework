@@ -14,7 +14,7 @@ namespace LydFramework.Application.Controllers.Roles
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize(Roles = "管理员")]
+    //[Authorize(Roles = "管理员")]
     public class RoleController : ControllerBase
     {
         private readonly IRoleRepository _roleRepository;

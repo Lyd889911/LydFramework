@@ -15,7 +15,7 @@ namespace LydFramework.Domain.Users
 
         Task<int> TotalAsync();
 
-        Task<User> FirstAsync(Expression<Func<User, bool>> predicate);
+        Task<User?> FirstAsync(Expression<Func<User, bool>> predicate);
 
         Task<User> AddAsync(User user);
         Task<UserRole> AddRoleAsuync(UserRole userRole);

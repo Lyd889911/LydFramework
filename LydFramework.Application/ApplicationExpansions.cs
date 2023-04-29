@@ -23,7 +23,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddSingleton<JWT>();
-            services.AddScoped<IdentityUser<Guid>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(jwtoption =>

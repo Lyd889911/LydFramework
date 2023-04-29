@@ -2,7 +2,7 @@
 {
     public class LoginRDto
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         public string UserName { get; set;}
         public string Status { get; set; }
         public List<string>? Roles { get; set; }

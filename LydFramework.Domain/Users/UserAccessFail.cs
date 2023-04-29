@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain.Users
 {
-    public class UserAccessFail:Entity<Guid>
+    public class UserAccessFail:Entity
     {
         public User User { get; init; }
-        public Guid UserId { get; set; }
+        public long? UserId { get; set; }
         private bool isLockOut;
         public DateTime? LockEnd { get; private set; }
         public int AccessFailCount { get; private set; }
@@ -20,7 +20,6 @@ namespace LydFramework.Domain.Users
         }
         public UserAccessFail(User user)
         {
-            this.Id = Guid.NewGuid();
             this.User = user;
             this.UserId = user.Id;
         }

@@ -22,16 +22,17 @@ namespace LydFramework.EFCore.MySql.Repositorys
 
         public async Task<UserRole> AddRoleAsuync(UserRole userRole)
         {
-            var result = await _dbContext.UserRole.AddAsync(userRole);
+            var result = await _dbContext.UserRoles.AddAsync(userRole);
             return result.Entity;
         }
 
-        public Task<User> FirstAsync(Expression<Func<User, bool>> predicate)
+        public async Task<User?> FirstAsync(Expression<Func<User, bool>> predicate)
         {
-            return _dbContext.Users
+            var user = await _dbContext.Users
                 .Include(x=>x.UserRoles)
                 .Include(x=>x.UserAccessFail)
-                .FirstAsync(predicate);
+                .FirstOrDefaultAsync(predicate);
+            return user;
         }
 
         public IQueryable<User> ListAll()

@@ -2,8 +2,8 @@
 {
     public class UpdateRoleDto
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         public string? Name { get; set; }
-        public List<Guid>? MenuIds { get; set; }
+        public List<long?>? MenuIds { get; set; }
     }
 }

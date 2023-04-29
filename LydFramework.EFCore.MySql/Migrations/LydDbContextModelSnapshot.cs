@@ -21,18 +21,18 @@ namespace LydFramework.EFCore.MySql.Migrations
 
             modelBuilder.Entity("LydFramework.Domain.Menus.Menu", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("bigint");
 
-                    b.Property<Guid?>("CreateBy")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("CreateBy")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid?>("DeleteBy")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("DeleteBy")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeleteTime")
                         .HasColumnType("datetime(6)");
@@ -47,14 +47,14 @@ namespace LydFramework.EFCore.MySql.Migrations
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("ModifyBy")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("ModifyBy")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("ModifyTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid?>("ParentId")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("ParentId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Path")
                         .IsRequired()
@@ -71,18 +71,18 @@ namespace LydFramework.EFCore.MySql.Migrations
 
             modelBuilder.Entity("LydFramework.Domain.Roles.Role", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("bigint");
 
-                    b.Property<Guid?>("CreateBy")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("CreateBy")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid?>("DeleteBy")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("DeleteBy")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeleteTime")
                         .HasColumnType("datetime(6)");
@@ -90,8 +90,8 @@ namespace LydFramework.EFCore.MySql.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<Guid?>("ModifyBy")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("ModifyBy")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("ModifyTime")
                         .HasColumnType("datetime(6)");
@@ -107,15 +107,17 @@ namespace LydFramework.EFCore.MySql.Migrations
 
             modelBuilder.Entity("LydFramework.Domain.Roles.RoleMenu", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("bigint");
 
-                    b.Property<Guid>("MenuId")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("MenuId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -123,23 +125,23 @@ namespace LydFramework.EFCore.MySql.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleMenu");
+                    b.ToTable("RoleMenus");
                 });
 
             modelBuilder.Entity("LydFramework.Domain.Users.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("bigint");
 
-                    b.Property<Guid?>("CreateBy")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("CreateBy")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("CreateTime")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid?>("DeleteBy")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("DeleteBy")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeleteTime")
                         .HasColumnType("datetime(6)");
@@ -147,8 +149,8 @@ namespace LydFramework.EFCore.MySql.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<Guid?>("ModifyBy")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("ModifyBy")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("ModifyTime")
                         .HasColumnType("datetime(6)");
@@ -172,9 +174,9 @@ namespace LydFramework.EFCore.MySql.Migrations
 
             modelBuilder.Entity("LydFramework.Domain.Users.UserAccessFail", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("bigint");
 
                     b.Property<int>("AccessFailCount")
                         .HasColumnType("int");
@@ -182,8 +184,8 @@ namespace LydFramework.EFCore.MySql.Migrations
                     b.Property<DateTime?>("LockEnd")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -195,15 +197,17 @@ namespace LydFramework.EFCore.MySql.Migrations
 
             modelBuilder.Entity("LydFramework.Domain.Users.UserRole", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("bigint");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)");
+                    b.Property<long?>("UserId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -211,7 +215,7 @@ namespace LydFramework.EFCore.MySql.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserRole");
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("LydFramework.Domain.Roles.RoleMenu", b =>
@@ -237,9 +241,7 @@ namespace LydFramework.EFCore.MySql.Migrations
                 {
                     b.HasOne("LydFramework.Domain.Users.User", "User")
                         .WithOne("UserAccessFail")
-                        .HasForeignKey("LydFramework.Domain.Users.UserAccessFail", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LydFramework.Domain.Users.UserAccessFail", "UserId");
 
                     b.Navigation("User");
                 });

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain.Shared.BaseRepository
 {
-    public interface IRepository<TEntity, TKey> : IRepository<TEntity> where TEntity : Entity<TKey>
+    public interface IRepository<TEntity, TKey> : IRepository<TEntity> where TEntity : Entity
     {
         /// <summary>
         /// 删除

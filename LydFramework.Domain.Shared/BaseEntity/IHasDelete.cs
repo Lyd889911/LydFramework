@@ -9,7 +9,7 @@ namespace LydFramework.Domain.Shared.BaseEntity
     /// <summary>
     /// 是否有删除
     /// </summary>
-    public interface IHasDelete<TKey>
+    public interface IHasDelete
     {
         /// <summary>
         /// 是否删除
@@ -18,7 +18,7 @@ namespace LydFramework.Domain.Shared.BaseEntity
         /// <summary>
         /// 删除人Id
         /// </summary>
-        TKey? DeleteBy { get; }
+        long? DeleteBy { get; }
 
         /// <summary>
         /// 删除时间

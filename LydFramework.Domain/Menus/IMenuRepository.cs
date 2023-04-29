@@ -21,6 +21,6 @@ namespace LydFramework.Domain.Menus
         /// <summary>
         /// 根据条件查找第一个菜单
         /// </summary>
-        Task<Menu> FirstAsync(Expression<Func<Menu, bool>> predicate);
+        Task<Menu?> FirstAsync(Expression<Func<Menu, bool>> predicate);
     }
 }

@@ -22,13 +22,13 @@ namespace LydFramework.EFCore.MySql.Repositorys
 
         public async Task<RoleMenu> AddMenuAsync(RoleMenu roleMenu)
         {
-            var rm = await _dbContext.RoleMenu.AddAsync(roleMenu);
+            var rm = await _dbContext.RoleMenus.AddAsync(roleMenu);
             return rm.Entity;
         }
 
-        public Task<Role> FirstAsync(Expression<Func<Role, bool>> predicate)
+        public async Task<Role?> FirstAsync(Expression<Func<Role, bool>> predicate)
         {
-            var role = _dbContext.Roles.Include(x=>x.RoleMenus).FirstAsync(predicate);
+            var role = await _dbContext.Roles.Include(x=>x.RoleMenus).FirstOrDefaultAsync(predicate);
             return role;
         }
 

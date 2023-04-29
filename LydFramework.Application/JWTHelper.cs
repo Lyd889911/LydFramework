@@ -14,7 +14,7 @@ namespace LydFramework.Application
         {
             _configuration = configuration;
         }
-        public string Create(IdentityUser identityUser)
+        public string Create(IdentityUser<long?> identityUser)
         {
             //主体内容payload
             //可以自定义键值对，也可以使用ClaimTypes里面定义的一些东西

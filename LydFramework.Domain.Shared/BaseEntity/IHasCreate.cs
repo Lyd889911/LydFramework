@@ -9,12 +9,12 @@ namespace LydFramework.Domain.Shared.BaseEntity
     /// <summary>
     /// 是否有创建
     /// </summary>
-    public interface IHasCreate<TKey>
+    public interface IHasCreate
     {
         /// <summary>
         /// 创建者
         /// </summary>
-        TKey? CreateBy { get; }
+        long? CreateBy { get; }
         /// <summary>
         /// 创建时间
         /// </summary>

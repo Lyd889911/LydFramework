@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain.Roles
 {
-    public class RoleMenu:Entity<Guid>
+    public class RoleMenu:Entity
     {
-        public Guid MenuId { get; set; }
+        public long? MenuId { get; set; }
         public Menu Menu { get; set; }
 
-        public Guid RoleId { get; set; }
+        public long? RoleId { get; set; }
         public Role Role { get; set; }
-        public RoleMenu(Role role,Menu menu):base(Guid.NewGuid())
+        public RoleMenu(Role role,Menu menu)
         { 
             Menu = menu;
             MenuId=menu.Id;

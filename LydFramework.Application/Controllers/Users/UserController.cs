@@ -29,10 +29,9 @@ namespace LydFramework.Application.Controllers.Users
         //添加用户
         [HttpPost]
         [UnitOfWork(typeof(LydDbContext))]
-        [Authorize(Roles = "管理员")]
+        //[Authorize(Roles = "管理员")]
         public async Task<UserDto> Create(AddUserDto dto)
         {
-            string id = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             User user = new User(dto.UserName, dto.Password);
             if (dto.RoleIds != null)
             {
@@ -113,7 +112,7 @@ namespace LydFramework.Application.Controllers.Users
         [HttpDelete("{Id}")]
         [UnitOfWork(typeof(LydDbContext))]
         [Authorize(Roles = "管理员")]
-        public async Task Delete([FromRoute]Guid Id)
+        public async Task Delete([FromRoute]long Id)
         {
             var user = await _userRepository.FirstAsync(x => x.Id == Id);
             user.Delete();

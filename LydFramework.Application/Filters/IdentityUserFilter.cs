@@ -12,8 +12,8 @@ namespace LydFramework.Application.Filters
 {
     public class IdentityUserFilter : IAsyncActionFilter
     {
-        private readonly Domain.Shared.IdentityUser<Guid> _identityUser;
-        public IdentityUserFilter(Domain.Shared.IdentityUser<Guid> identityUser)
+        private readonly Domain.Shared.IdentityUser<long?> _identityUser;
+        public IdentityUserFilter(Domain.Shared.IdentityUser<long?> identityUser)
         {
             _identityUser = identityUser;
         }
@@ -39,7 +39,7 @@ namespace LydFramework.Application.Filters
 
                 //获取登录用户id
                 Claim? Id = user.FindFirst(ClaimTypes.NameIdentifier);
-                _identityUser.Id.Value = Id == null ? null : new Guid(Id.Value);
+                _identityUser.Id.Value = Id == null ? null : Convert.ToInt64(Id.Value);
 
                 //获取登录用户角色
                 var roles = user.FindAll(ClaimTypes.Role);

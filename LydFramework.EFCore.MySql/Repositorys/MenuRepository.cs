@@ -17,9 +17,9 @@ namespace LydFramework.EFCore.MySql.Repositorys
             return result.Entity;
         }
 
-        public Task<Menu> FirstAsync(Expression<Func<Menu, bool>> predicate)
+        public async Task<Menu?> FirstAsync(Expression<Func<Menu, bool>> predicate)
         {
-            var menu = _dbContext.Menus.FirstAsync(predicate);
+            var menu = await _dbContext.Menus.FirstOrDefaultAsync(predicate);
             return menu;
         }
 

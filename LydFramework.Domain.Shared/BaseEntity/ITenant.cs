@@ -11,6 +11,6 @@ namespace LydFramework.Domain.Shared.BaseEntity
         /// <summary>
         /// 租户Id
         /// </summary>
-        Guid? TenantId { get; set; }
+        long? TenantId { get; set; }
     }
 }

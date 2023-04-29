@@ -9,12 +9,12 @@ namespace LydFramework.Domain.Shared.BaseEntity
     /// <summary>
     /// 是否有修改
     /// </summary>
-    public interface IHasModify<TKey>
+    public interface IHasModify
     {
         /// <summary>
         /// 修改人
         /// </summary>
-        TKey? ModifyBy { get; }
+        long? ModifyBy { get; }
         /// <summary>
         /// 修改时间
         /// </summary>

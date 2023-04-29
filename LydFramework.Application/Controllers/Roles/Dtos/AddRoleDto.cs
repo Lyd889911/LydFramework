@@ -3,6 +3,6 @@
     public class AddRoleDto
     {
         public string RoleName { get; set; }
-        public List<Guid>? MenuIds { get; set; }
+        public List<long?>? MenuIds { get; set; }
     }
 }

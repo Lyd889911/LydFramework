@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 #region 添加各个板块的服务
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddEFCoreMySql(builder.Configuration);
+builder.Services.AddDomainShared();
 #endregion
 
 var app = builder.Build();

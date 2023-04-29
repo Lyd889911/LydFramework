@@ -2,7 +2,7 @@
 {
     public class PatchRoleUserDto
     {
-        public Guid Id { get; set; }
-        public List<Guid>? RoleIds { get; set; }
+        public long Id { get; set; }
+        public List<long?>? RoleIds { get; set; }
     }
 }
