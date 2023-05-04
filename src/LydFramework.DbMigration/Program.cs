@@ -1,0 +1,25 @@
+using LydFramework.DbMigration;
+using LydFramework.EFCore.DbContexts;
+using LydFramework.Tools;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+IHost host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices(async services =>
+    {
+        var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
+        services.AddEFCoreMySql(configuration);
+        services.AddScoped<SeedData>();
+        var sp = services.BuildServiceProvider();
+        var context = sp.GetRequiredService<LydDbContext>();
+        if (context.Database.GetPendingMigrations().Any())
+        {
+            context.Database.Migrate(); //Ö´ÐÐÇ¨ÒÆ
+        }
+        var seeddata = sp.GetRequiredService<SeedData>();
+        await seeddata.Seed();
+    })
+    .Build();
+
+
+await host.RunAsync();

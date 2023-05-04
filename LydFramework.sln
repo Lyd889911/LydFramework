@@ -3,21 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Application", "LydFramework.Application\LydFramework.Application.csproj", "{79296AF9-3A3A-47CA-9E08-D8C35A656B91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.WebApi", "src\LydFramework.WebApi\LydFramework.WebApi.csproj", "{79296AF9-3A3A-47CA-9E08-D8C35A656B91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Domain", "LydFramework.Domain\LydFramework.Domain.csproj", "{609F4239-FE2C-4BE7-9282-01FBB93537DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Domain", "src\LydFramework.Domain\LydFramework.Domain.csproj", "{609F4239-FE2C-4BE7-9282-01FBB93537DE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Tools", "LydFramework.Tools\LydFramework.Tools.csproj", "{63A39F42-F919-4BD7-A072-96C570010301}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Tools", "src\LydFramework.Tools\LydFramework.Tools.csproj", "{63A39F42-F919-4BD7-A072-96C570010301}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Infrastructure", "LydFramework.Infrastructure\LydFramework.Infrastructure.csproj", "{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Infrastructure", "src\LydFramework.Infrastructure\LydFramework.Infrastructure.csproj", "{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore.SqlServer", "LydFramework.EFCore.SqlServer\LydFramework.EFCore.SqlServer.csproj", "{911FA27E-C2A6-4643-913A-E10DAA4B873D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Domain.Shared", "src\LydFramework.Domain.Shared\LydFramework.Domain.Shared.csproj", "{D31B396F-A146-4215-968C-08540A5DFB2D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Domain.Shared", "LydFramework.Domain.Shared\LydFramework.Domain.Shared.csproj", "{D31B396F-A146-4215-968C-08540A5DFB2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.DbMigration", "src\LydFramework.DbMigration\LydFramework.DbMigration.csproj", "{E1AD0173-13D2-41CD-96EF-4884936372E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.DbMigration", "LydFramework.DbMigration\LydFramework.DbMigration.csproj", "{E1AD0173-13D2-41CD-96EF-4884936372E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore", "src\LydFramework.EFCore\LydFramework.EFCore.csproj", "{41B99310-2E84-4FD5-ACE0-574C3B9844AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.EFCore.MySql", "LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj", "{729C83C4-D9B4-406C-B000-207F267C6D7E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7A17DBBA-7817-411C-A3EE-70A59FE726E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Application", "src\LydFramework.Application\LydFramework.Application.csproj", "{C3FADB49-BC73-4716-8F22-22824042DD8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Application.Contracts", "src\LydFramework.Application.Contracts\LydFramework.Application.Contracts.csproj", "{011DF754-FA88-41D0-A59E-48F8CAE8CCE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +45,6 @@ Global
 		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{911FA27E-C2A6-4643-913A-E10DAA4B873D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{911FA27E-C2A6-4643-913A-E10DAA4B873D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{911FA27E-C2A6-4643-913A-E10DAA4B873D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{911FA27E-C2A6-4643-913A-E10DAA4B873D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D31B396F-A146-4215-968C-08540A5DFB2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D31B396F-A146-4215-968C-08540A5DFB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D31B396F-A146-4215-968C-08540A5DFB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,13 +53,32 @@ Global
 		{E1AD0173-13D2-41CD-96EF-4884936372E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1AD0173-13D2-41CD-96EF-4884936372E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1AD0173-13D2-41CD-96EF-4884936372E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{729C83C4-D9B4-406C-B000-207F267C6D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{729C83C4-D9B4-406C-B000-207F267C6D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{729C83C4-D9B4-406C-B000-207F267C6D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{729C83C4-D9B4-406C-B000-207F267C6D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B99310-2E84-4FD5-ACE0-574C3B9844AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B99310-2E84-4FD5-ACE0-574C3B9844AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B99310-2E84-4FD5-ACE0-574C3B9844AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B99310-2E84-4FD5-ACE0-574C3B9844AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3FADB49-BC73-4716-8F22-22824042DD8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3FADB49-BC73-4716-8F22-22824042DD8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3FADB49-BC73-4716-8F22-22824042DD8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3FADB49-BC73-4716-8F22-22824042DD8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{011DF754-FA88-41D0-A59E-48F8CAE8CCE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{011DF754-FA88-41D0-A59E-48F8CAE8CCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{011DF754-FA88-41D0-A59E-48F8CAE8CCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{011DF754-FA88-41D0-A59E-48F8CAE8CCE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{79296AF9-3A3A-47CA-9E08-D8C35A656B91} = {7A17DBBA-7817-411C-A3EE-70A59FE726E6}
+		{609F4239-FE2C-4BE7-9282-01FBB93537DE} = {7A17DBBA-7817-411C-A3EE-70A59FE726E6}
+		{63A39F42-F919-4BD7-A072-96C570010301} = {7A17DBBA-7817-411C-A3EE-70A59FE726E6}
+		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56} = {7A17DBBA-7817-411C-A3EE-70A59FE726E6}
+		{D31B396F-A146-4215-968C-08540A5DFB2D} = {7A17DBBA-7817-411C-A3EE-70A59FE726E6}
+		{E1AD0173-13D2-41CD-96EF-4884936372E8} = {7A17DBBA-7817-411C-A3EE-70A59FE726E6}
+		{41B99310-2E84-4FD5-ACE0-574C3B9844AD} = {7A17DBBA-7817-411C-A3EE-70A59FE726E6}
+		{C3FADB49-BC73-4716-8F22-22824042DD8D} = {7A17DBBA-7817-411C-A3EE-70A59FE726E6}
+		{011DF754-FA88-41D0-A59E-48F8CAE8CCE5} = {7A17DBBA-7817-411C-A3EE-70A59FE726E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD78597E-1BEB-4562-B008-73D2E368D7E7}
