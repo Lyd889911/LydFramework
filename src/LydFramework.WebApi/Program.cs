@@ -1,4 +1,5 @@
 using LydFramework.Application.Middlewares;
+using LydFramework.WebApi.Middlewares;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services.AddWebApi(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<RateLimitMiddleware>();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<StatusMiddleware>();
 app.UseAuthentication();

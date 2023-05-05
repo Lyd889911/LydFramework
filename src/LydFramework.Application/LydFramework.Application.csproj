@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LydFramework.Application.Contracts\LydFramework.Application.Contracts.csproj" />
-    <ProjectReference Include="..\src\LydFramework.EFCore\LydFramework.EFCore.csproj" />
+    <ProjectReference Include="..\LydFramework.EFCore\LydFramework.EFCore.csproj" />
   </ItemGroup>
 
 </Project>

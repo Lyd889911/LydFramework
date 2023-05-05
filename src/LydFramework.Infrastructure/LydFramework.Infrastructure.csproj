@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LydFramework.Domain\LydFramework.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MQ\Consumers\" />
+  </ItemGroup>
+
 </Project>

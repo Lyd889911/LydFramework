@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\LydFramework.Domain\LydFramework.Domain.csproj" />
+    <ProjectReference Include="..\LydFramework.Domain\LydFramework.Domain.csproj" />
   </ItemGroup>
 
 </Project>

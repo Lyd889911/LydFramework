@@ -14,6 +14,8 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddWebApi(this IServiceCollection services,IConfiguration configuration)
         {
+            services.AddMemoryCache();
+
             services.Configure<MvcOptions>(x =>
             {
                 x.Filters.Add<IdentityUserFilter>();
