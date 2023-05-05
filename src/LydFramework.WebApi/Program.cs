@@ -1,5 +1,6 @@
 using LydFramework.Application.Middlewares;
 using LydFramework.WebApi.Middlewares;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEFCoreMySql(builder.Configuration);
 builder.Services.AddDomainShared();
 builder.Services.AddApplication(builder.Configuration);
+builder.Services.AddMQ(builder.Configuration);
 builder.Services.AddWebApi(builder.Configuration);
 #endregion
 

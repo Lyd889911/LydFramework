@@ -14,6 +14,7 @@
     <ProjectReference Include="..\LydFramework.Application\LydFramework.Application.csproj" />
     <ProjectReference Include="..\LydFramework.Domain\LydFramework.Domain.csproj" />
     <ProjectReference Include="..\LydFramework.EFCore\LydFramework.EFCore.csproj" />
+    <ProjectReference Include="..\LydFramework.Infrastructure\LydFramework.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

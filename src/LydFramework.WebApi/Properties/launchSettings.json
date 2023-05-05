@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "LydFramework.Application": {
+    "LydFramework.WebApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,

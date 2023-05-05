@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Domain
+namespace LydFramework.Infrastructure.MQ.Handlers
 {
-    public interface IMqClient
+    public interface IHandler
     {
-        void Publish(string key,object message);
+        Task Handle(string message);
     }
 }
