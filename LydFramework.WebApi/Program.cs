@@ -1,4 +1,6 @@
 using LydFramework.Application.Middlewares;
+using LydFramework.EFCore.DbContexts;
+using LydFramework.EFCore.SqlServer;
 using LydFramework.WebApi.Middlewares;
 using System.Reflection;
 
@@ -8,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 #region 添加各个板块的服务
-builder.Services.AddEFCoreMySql(builder.Configuration);
+builder.Services.AddEFCoreSqlServer<LydDbContext>(builder.Configuration);
 builder.Services.AddDomainShared();
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddWebApi(builder.Configuration);

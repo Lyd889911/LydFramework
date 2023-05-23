@@ -16,6 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LydFramework.EFCore\LydFramework.EFCore.csproj" />
+    <ProjectReference Include="..\EFCore\LydFramework.EFCore.SqlServer\LydFramework.EFCore.SqlServer.csproj" />
   </ItemGroup>
 </Project>

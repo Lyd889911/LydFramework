@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddDomainShared(this IServiceCollection services)
         {
-            services.AddScoped<IdentityUser<long?>>();
+            services.AddScoped<IdentityProvider>();
             return services;
         }
     }

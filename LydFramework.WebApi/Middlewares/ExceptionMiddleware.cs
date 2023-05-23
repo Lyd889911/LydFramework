@@ -1,4 +1,5 @@
 ﻿using LydFramework.Application.Contracts.Dtos;
+using LydFramework.Domain.Shared.Expections;
 using Microsoft.Extensions.Logging.Abstractions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -37,6 +38,11 @@ namespace LydFramework.Application.Middlewares
                 };
 
                 var result = new ResultDto(500,"异常",ex);
+
+                //业务错误
+                if (ex is BusinessException bex)
+                    result = new ResultDto(bex.Code, bex.Message);
+
                 responseContent = JsonConvert.SerializeObject(result, settings);
 
                 //需要写入到流中

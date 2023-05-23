@@ -1,6 +1,4 @@
-﻿
-
-namespace LydFramework.EFCore.DbContexts
+﻿namespace LydFramework.EFCore.DbContexts
 {
     public class LydDbContext:DbContext
     {

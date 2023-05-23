@@ -18,12 +18,11 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.Configure<MvcOptions>(x =>
             {
-                x.Filters.Add<IdentityUserFilter>();
                 x.Filters.Add<ResponseFilter>();
                 x.Filters.Add<UnitOfWorkFilter>();
             });
 
-            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddHttpContextAccessor();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(jwtoption =>
