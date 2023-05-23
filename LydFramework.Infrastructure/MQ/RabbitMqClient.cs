@@ -1,49 +1,70 @@
 ﻿using LydFramework.Domain;
 using LydFramework.Infrastructure.MQ.Consumers;
+using LydFramework.Infrastructure.MQ.Handlers;
 using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace LydFramework.Infrastructure.MQ
 {
     public class RabbitMqClient : IMqClient
     {
         private readonly IConfiguration _configuration;
-        private IModel channel;
-        private IConnection connection;
-        public RabbitMqClient(IConfiguration configuration)
+        private readonly HandlerFactory _handlerFactory;
+        private static IModel channel;
+        private static IConnection connection;
+        private static bool _isConn = false;
+        private MQOptions _option;
+
+
+        public RabbitMqClient(IConfiguration configuration, HandlerFactory handlerFactory)
         {
             _configuration = configuration;
-            ConnectionFactory factory = new ConnectionFactory
-            {
-                UserName = _configuration["MQ:UserName"],
-                Password = _configuration["MQ:Password"],
-                VirtualHost = _configuration["MQ:VirtualHost"],
-                HostName = _configuration["MQ:HostName"],
-            };
-            connection = factory.CreateConnection();//创建连接
-            Console.WriteLine($"连接是否打开:{connection.IsOpen}");
-            channel = connection.CreateModel();//创建通道
-            Console.WriteLine($"通道是否打开:{channel.IsOpen}");
+            _handlerFactory = handlerFactory;
+            _option = _configuration.GetSection("MQ").Get<MQOptions>();
 
-            List<string> queues = _configuration.GetValue<List<string>>("MQ:Queues");
-            foreach (string queue in queues)
-            {
-                channel.QueueDeclare(queue: "Default");
-            }
-            
-            bool hasConsumer = _configuration.GetValue<bool>("MQ:HasConsumer");
-            if(hasConsumer)
-            {
-                Consumer(queues);
-            }
 
+            if (!_isConn)
+            {
+                ConnectionFactory factory = new ConnectionFactory
+                {
+                    UserName = _option.UserName,
+                    Password = _option.Password,
+                    VirtualHost = _option.VirtualHost,
+                    HostName = _option.HostName,
+                };
+                connection = factory.CreateConnection();//创建连接
+                Console.WriteLine($"连接是否打开:{connection.IsOpen}");
+                channel = connection.CreateModel();//创建通道
+                Console.WriteLine($"通道是否打开:{channel.IsOpen}");
+
+                if(connection.IsOpen&& channel.IsOpen)
+                {
+                    _isConn = true;
+                    foreach (string queue in _option.Queues)
+                    {
+                        channel.QueueDeclare(queue: queue);
+                    }
+
+                    if (_option.HasConsumer)
+                    {
+                        Consumer(_option.Queues);
+                    }
+                }
+            }
         }
-        public void Publish(object message)
+
+
+        public void Publish(string key,object message)
         {
-            throw new NotImplementedException();
+            string str = JsonConvert.SerializeObject(message);
+            byte[] body = System.Text.Encoding.UTF8.GetBytes(str);
+            channel.BasicPublish(exchange: "", routingKey: key, body: body);
         }
+
+
         private void Consumer(List<string> queues)
         {
             foreach(var queue in queues)
@@ -54,6 +75,7 @@ namespace LydFramework.Infrastructure.MQ
             }
         }
 
+
         private EventingBasicConsumer CreateConsumer(string queue)
         {
             var consumer = new EventingBasicConsumer(channel);
@@ -61,13 +83,10 @@ namespace LydFramework.Infrastructure.MQ
             consumer.Received += (model, ea) => {
                 var body = ea.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine("已接收到消息: {0}", message);
 
-                //TODO：根据不同的消费队列，做出不同消费方法选择
-                switch (queue)
-                {
-                    case "Default": break;
-                }
+                //根据不同的消费队列，做出不同消费方法选择
+                IHandler handler = _handlerFactory.Create(queue);
+                handler.Handle(message);
 
                 channel.BasicAck(ea.DeliveryTag, false);
             };

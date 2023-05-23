@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Infrastructure
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Domain.Shared", "LydFramework.Domain.Shared\LydFramework.Domain.Shared.csproj", "{D31B396F-A146-4215-968C-08540A5DFB2D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.DbMigration", "LydFramework.DbMigration\LydFramework.DbMigration.csproj", "{E1AD0173-13D2-41CD-96EF-4884936372E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.DbMigration", "EFCore\LydFramework.DbMigration\LydFramework.DbMigration.csproj", "{E1AD0173-13D2-41CD-96EF-4884936372E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore", "LydFramework.EFCore\LydFramework.EFCore.csproj", "{41B99310-2E84-4FD5-ACE0-574C3B9844AD}"
 EndProject
@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EFCore", "EFCore", "{915C42
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.EFCore.SqlServer", "EFCore\LydFramework.EFCore.SqlServer\LydFramework.EFCore.SqlServer.csproj", "{8F904B41-C331-492F-8382-BDBD371C7705}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.EFCore.MySql", "LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj", "{163B1F8C-4787-47BB-850A-B73DF646D817}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.EFCore.MySql", "EFCore\LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj", "{163B1F8C-4787-47BB-850A-B73DF646D817}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

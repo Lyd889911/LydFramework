@@ -14,6 +14,7 @@
     <ProjectReference Include="..\EFCore\LydFramework.EFCore.SqlServer\LydFramework.EFCore.SqlServer.csproj" />
     <ProjectReference Include="..\LydFramework.Application\LydFramework.Application.csproj" />
     <ProjectReference Include="..\LydFramework.Domain\LydFramework.Domain.csproj" />
+    <ProjectReference Include="..\LydFramework.Infrastructure\LydFramework.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

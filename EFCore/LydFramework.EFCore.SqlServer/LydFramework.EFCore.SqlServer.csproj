@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\LydFramework.Domain\LydFramework.Domain.csproj" />
-    <ProjectReference Include="..\..\LydFramework.EFCore\LydFramework.EFCore.csproj" />
+    <ProjectReference Include="..\LydFramework.EFCore\LydFramework.EFCore.csproj" />
   </ItemGroup>
 
 </Project>
