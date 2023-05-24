@@ -6,8 +6,8 @@ namespace LydFramework.EFCore.Repositorys
 {
     public class MenuRepository : IMenuRepository
     {
-        private readonly LydDbContext _dbContext;
-        public MenuRepository(LydDbContext dbContext)
+        private readonly AuthDbContext _dbContext;
+        public MenuRepository(AuthDbContext dbContext)
         {
             _dbContext = dbContext;
         }

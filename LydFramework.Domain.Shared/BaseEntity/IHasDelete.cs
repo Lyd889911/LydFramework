@@ -14,15 +14,15 @@ namespace LydFramework.Domain.Shared.BaseEntity
         /// <summary>
         /// 是否删除
         /// </summary>
-        bool IsDeleted { get; }
+        bool IsDeleted { get; set; }
         /// <summary>
         /// 删除人Id
         /// </summary>
-        long? DeleteBy { get; }
+        long? DeleteBy { get; set; }
 
         /// <summary>
         /// 删除时间
         /// </summary>
-        DateTime? DeleteTime { get; }
+        DateTime? DeleteTime { get; set; }
     }
 }

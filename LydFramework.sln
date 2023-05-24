@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Application.Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EFCore", "EFCore", "{915C423D-FC1A-4D52-8ADC-CC4FE43B5538}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.EFCore.SqlServer", "EFCore\LydFramework.EFCore.SqlServer\LydFramework.EFCore.SqlServer.csproj", "{8F904B41-C331-492F-8382-BDBD371C7705}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore.SqlServer", "EFCore\LydFramework.EFCore.SqlServer\LydFramework.EFCore.SqlServer.csproj", "{8F904B41-C331-492F-8382-BDBD371C7705}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.EFCore.MySql", "EFCore\LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj", "{163B1F8C-4787-47BB-850A-B73DF646D817}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore.MySql", "EFCore\LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj", "{163B1F8C-4787-47BB-850A-B73DF646D817}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.EFCore.Custom", "EFCore\LydFramework.EFCore.Custom\LydFramework.EFCore.Custom.csproj", "{E981466A-22CA-4B20-9CB4-ED238D563133}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{163B1F8C-4787-47BB-850A-B73DF646D817}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{163B1F8C-4787-47BB-850A-B73DF646D817}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{163B1F8C-4787-47BB-850A-B73DF646D817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E981466A-22CA-4B20-9CB4-ED238D563133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E981466A-22CA-4B20-9CB4-ED238D563133}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E981466A-22CA-4B20-9CB4-ED238D563133}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E981466A-22CA-4B20-9CB4-ED238D563133}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{41B99310-2E84-4FD5-ACE0-574C3B9844AD} = {915C423D-FC1A-4D52-8ADC-CC4FE43B5538}
 		{8F904B41-C331-492F-8382-BDBD371C7705} = {915C423D-FC1A-4D52-8ADC-CC4FE43B5538}
 		{163B1F8C-4787-47BB-850A-B73DF646D817} = {915C423D-FC1A-4D52-8ADC-CC4FE43B5538}
+		{E981466A-22CA-4B20-9CB4-ED238D563133} = {915C423D-FC1A-4D52-8ADC-CC4FE43B5538}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD78597E-1BEB-4562-B008-73D2E368D7E7}

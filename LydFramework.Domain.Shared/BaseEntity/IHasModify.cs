@@ -14,10 +14,10 @@ namespace LydFramework.Domain.Shared.BaseEntity
         /// <summary>
         /// 修改人
         /// </summary>
-        long? ModifyBy { get; }
+        long? ModifyBy { get; set; }
         /// <summary>
         /// 修改时间
         /// </summary>
-        DateTime? ModifyTime { get; }
+        DateTime? ModifyTime { get; set; }
     }
 }

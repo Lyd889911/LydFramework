@@ -26,12 +26,12 @@ namespace LydFramework.WebApi.Controllers
 
         //添加角色
         [HttpPost]
-        [UnitOfWork(typeof(LydDbContext))]
+        [UnitOfWork(typeof(AuthDbContext))]
         public async Task<RoleDto> Create(AddRoleDto dto) => await _roleService.Create(dto);
 
         //更新角色
         [HttpPut]
-        [UnitOfWork(typeof(LydDbContext))]
+        [UnitOfWork(typeof(AuthDbContext))]
         public async Task<RoleDto> Update(UpdateRoleDto dto) => await _roleService.Update(dto);
 
         //获取角色列表

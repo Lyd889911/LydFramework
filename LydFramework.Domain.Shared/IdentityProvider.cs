@@ -33,7 +33,7 @@ namespace LydFramework.Domain.Shared
         /// <summary>
         /// 租户id
         /// </summary>
-        public string? Setid
+        public string? TenantId
         {
             get => _httpContextAccessor.HttpContext?.User.FindFirstValue("TenantId");
         }

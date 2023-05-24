@@ -11,7 +11,7 @@ namespace LydFramework.EFCore.SqlServer
             (this IServiceCollection services, IConfiguration configuration)
             where TDbContext:DbContext
         {
-            services.AddDbContext<TDbContext>(opt =>
+            services.AddEFCore<TDbContext>(opt =>
             {
 
                 if (configuration["DbVersion"] == "2008" || configuration["DbVersion"] == "2005")
@@ -20,7 +20,7 @@ namespace LydFramework.EFCore.SqlServer
                 }
                 opt.UseSqlServer(configuration["DbConnection"]);
             });
-            services.AddEFCore(configuration);
+            services.AddRepository();
             return services;
         }
     }

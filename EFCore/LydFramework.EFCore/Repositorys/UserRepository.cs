@@ -9,8 +9,8 @@ namespace LydFramework.EFCore.Repositorys
 {
     public class UserRepository : IUserRepository
     {
-        private readonly LydDbContext _dbContext;
-        public UserRepository(LydDbContext dbContext)
+        private readonly AuthDbContext _dbContext;
+        public UserRepository(AuthDbContext dbContext)
         {
             _dbContext = dbContext;
         }

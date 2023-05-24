@@ -14,10 +14,10 @@ namespace LydFramework.Domain.Shared.BaseEntity
         /// <summary>
         /// 创建者
         /// </summary>
-        long? CreateBy { get; }
+        long? CreateBy { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>
-        DateTime? CreateTime { get; }
+        DateTime? CreateTime { get; set; }
     }
 }

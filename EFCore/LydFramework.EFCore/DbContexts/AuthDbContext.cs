@@ -1,17 +1,17 @@
 ﻿namespace LydFramework.EFCore.DbContexts
 {
-    public class LydDbContext:DbContext
+    public class AuthDbContext:DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<RoleMenu> RoleMenus { get; set; }
         public DbSet<Menu> Menus { get; set; }
-        public LydDbContext(DbContextOptions<LydDbContext> options) : base(options)
+        public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
         {
 
         }
-        public LydDbContext()
+        public AuthDbContext()
         {
 
         }

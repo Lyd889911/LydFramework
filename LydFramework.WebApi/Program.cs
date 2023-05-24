@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 #region 添加各个板块的服务
-builder.Services.AddEFCoreSqlServer<LydDbContext>(builder.Configuration);
+builder.Services.AddEFCoreSqlServer<AuthDbContext>(builder.Configuration);
 builder.Services.AddDomainShared();
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddMQ(builder.Configuration);

@@ -1,4 +1,5 @@
-﻿using LydFramework.EFCore.DbContexts;
+﻿using EntityFrameworkCore.Core;
+using LydFramework.EFCore.DbContexts;
 using LydFramework.EFCore.Repositorys;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.Extensions.Configuration;
@@ -10,14 +11,15 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class EFCoreExpansions
     {
-        public static IServiceCollection AddEFCore(this IServiceCollection services,IConfiguration configuration)
+        /// <summary>
+        /// 批量添加仓储
+        /// </summary>
+        public static IServiceCollection AddRepository(this IServiceCollection services)
         {
-
-
-            #region 批量注册Repository
             var sp = services.BuildServiceProvider();
             ILoggerFactory factory = sp.GetRequiredService<ILoggerFactory>();
-            ILogger logger = factory.CreateLogger("RegisterEFCore");
+
+            ILogger logger = factory.CreateLogger("RegisterRepository");
             StringBuilder sb = new StringBuilder();
             Type[] types = Assembly.GetExecutingAssembly().GetTypes();
             foreach (Type type in types)
@@ -34,8 +36,20 @@ namespace Microsoft.Extensions.DependencyInjection
                 }
             }
             logger.LogInformation(sb.ToString());
-            #endregion
 
+            return services;
+        }
+
+        /// <summary>
+        /// 添加工作单元
+        /// </summary>
+        public static IServiceCollection AddEFCore<TDbContext>(this IServiceCollection services,
+             Action<DbContextOptionsBuilder>? optionsAction = null,
+             ServiceLifetime lifetime = ServiceLifetime.Scoped)
+            where TDbContext : DbContext
+        {
+            services.AddDbContextFactory<TDbContext>(optionsAction, lifetime);
+            services.AddTransient<IUnitOfWork,UnitOfWork<TDbContext>>();
             return services;
         }
     }

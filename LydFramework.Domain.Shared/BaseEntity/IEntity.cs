@@ -8,6 +8,6 @@ namespace LydFramework.Domain.Shared.BaseEntity
 {
     public interface IEntity<TKey>
     {
-        TKey Id { get; }
+        TKey Id { get; set; }
     }
 }

@@ -15,11 +15,11 @@ namespace LydFramework.EFCore.MySql
                     (this IServiceCollection services, IConfiguration configuration)
                     where TDbContext : DbContext
         {
-            services.AddDbContext<TDbContext>(opt =>
+            services.AddEFCore<TDbContext>(opt =>
             {
                 opt.UseMySql(configuration["DbConnection"], new MySqlServerVersion(configuration["DbVersion"]));
             });
-            services.AddEFCore(configuration);
+            services.AddRepository();
             return services;
         }
     }

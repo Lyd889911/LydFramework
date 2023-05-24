@@ -23,7 +23,7 @@ namespace LydFramework.WebApi.Controllers
 
         //创建一个菜单
         [HttpPost]
-        [UnitOfWork(typeof(LydDbContext))]
+        [UnitOfWork(typeof(AuthDbContext))]
         public async Task<MenuDto> Create(AddMenuDto dto) => await _menuService.Create(dto);
 
         //获取树形菜单
@@ -32,7 +32,7 @@ namespace LydFramework.WebApi.Controllers
 
         //编辑菜单
         [HttpPut]
-        [UnitOfWork(typeof(LydDbContext))]
+        [UnitOfWork(typeof(AuthDbContext))]
         public async Task<MenuDto> Update(UpdateMenuDto dto) => await _menuService.Update(dto);
 
     }
