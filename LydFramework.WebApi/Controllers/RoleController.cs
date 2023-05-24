@@ -5,6 +5,7 @@ using LydFramework.Application.Contracts.Roles.Dtos;
 using LydFramework.Domain.Menus;
 using LydFramework.Domain.Roles;
 using LydFramework.Domain.Shared.Attributes;
+using LydFramework.EFCore.Cores;
 using LydFramework.EFCore.DbContexts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -26,16 +27,15 @@ namespace LydFramework.WebApi.Controllers
 
         //添加角色
         [HttpPost]
-        [UnitOfWork(typeof(AuthDbContext))]
         public async Task<RoleDto> Create(AddRoleDto dto) => await _roleService.Create(dto);
 
         //更新角色
         [HttpPut]
-        [UnitOfWork(typeof(AuthDbContext))]
         public async Task<RoleDto> Update(UpdateRoleDto dto) => await _roleService.Update(dto);
 
         //获取角色列表
         [HttpGet("{Index}/{Size}")]
+        [DisabledUnitOfWork]
         public async Task<PageDto> List([FromRoute] ListRoleDto dto) => await _roleService.List(dto);
     }
 }

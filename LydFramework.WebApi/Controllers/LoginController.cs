@@ -24,7 +24,6 @@ namespace LydFramework.WebApi.Controllers
         }
 
         [HttpPost]
-        [UnitOfWork(typeof(AuthDbContext))]
         public async Task<ResultDto> Login(LoginDto dto)=> await _loginService.Login(dto);
 
 

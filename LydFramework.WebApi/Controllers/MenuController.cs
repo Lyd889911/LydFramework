@@ -3,6 +3,7 @@ using LydFramework.Application.Contracts.Menus;
 using LydFramework.Application.Contracts.Menus.Dtos;
 using LydFramework.Domain.Menus;
 using LydFramework.Domain.Shared.Attributes;
+using LydFramework.EFCore.Cores;
 using LydFramework.EFCore.DbContexts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -12,7 +13,7 @@ namespace LydFramework.WebApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    [Authorize(Roles = "管理员")]
+    //[Authorize(Roles = "管理员")]
     public class MenuController : ControllerBase
     {
         private readonly IMenuService _menuService;
@@ -23,16 +24,15 @@ namespace LydFramework.WebApi.Controllers
 
         //创建一个菜单
         [HttpPost]
-        [UnitOfWork(typeof(AuthDbContext))]
         public async Task<MenuDto> Create(AddMenuDto dto) => await _menuService.Create(dto);
 
         //获取树形菜单
         [HttpGet]
+        [DisabledUnitOfWork]
         public async Task<List<MenuDto>> TreeMenu() => await _menuService.TreeMenu();
 
         //编辑菜单
         [HttpPut]
-        [UnitOfWork(typeof(AuthDbContext))]
         public async Task<MenuDto> Update(UpdateMenuDto dto) => await _menuService.Update(dto);
 
     }

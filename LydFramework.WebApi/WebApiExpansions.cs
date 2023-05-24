@@ -19,7 +19,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.Configure<MvcOptions>(x =>
             {
                 x.Filters.Add<ResponseFilter>();
-                x.Filters.Add<UnitOfWorkFilter>();
+                //x.Filters.Add<UnitOfWorkFilter>();
             });
 
             services.AddHttpContextAccessor();

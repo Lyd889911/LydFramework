@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LydFramework.EFCore.SqlServer\LydFramework.EFCore.SqlServer.csproj" />
+    <Folder Include="Repositorys\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DbContexts\" />
-    <Folder Include="Repositorys\" />
+    <ProjectReference Include="..\LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj" />
   </ItemGroup>
 
 </Project>

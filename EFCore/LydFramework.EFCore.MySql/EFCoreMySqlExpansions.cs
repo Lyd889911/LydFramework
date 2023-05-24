@@ -7,19 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.EFCore.MySql
-{
+namespace Microsoft.Extensions.DependencyInjection
+{ 
     public static class EFCoreMySqlExpansions
     {
-        public static IServiceCollection AddEFCoreMySqlr<TDbContext>
-                    (this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddEFCoreMySql<TDbContext>
+                    (this IServiceCollection services, string connection,string dbversion)
                     where TDbContext : DbContext
         {
             services.AddEFCore<TDbContext>(opt =>
             {
-                opt.UseMySql(configuration["DbConnection"], new MySqlServerVersion(configuration["DbVersion"]));
+                opt.UseMySql(connection, new MySqlServerVersion(dbversion),x=>x.MigrationsAssembly("LydFramework.EFCore.MySql"));
             });
-            services.AddRepository();
             return services;
         }
     }

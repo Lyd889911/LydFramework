@@ -15,12 +15,12 @@ namespace LydFramework.DbMigration
         private readonly IRoleRepository _roleRepository;
         private readonly IUserRepository _userRepository;
         private readonly IMenuRepository _menuRepository;
-        private readonly LydDbContext _dbContext;
+        private readonly AuthDbContext _dbContext;
         private readonly ILogger<SeedData> _logger;
         public SeedData(IRoleRepository roleRepository,
             IUserRepository userRepository,
             IMenuRepository menuRepository,
-            LydDbContext dbContext,
+            AuthDbContext dbContext,
             ILogger<SeedData> logger)
         {
             _roleRepository = roleRepository;

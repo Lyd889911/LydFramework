@@ -1,6 +1,5 @@
 using LydFramework.DbMigration;
 using LydFramework.EFCore.DbContexts;
-using LydFramework.EFCore.SqlServer;
 using LydFramework.Tools;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
@@ -9,10 +8,10 @@ IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(async services =>
     {
         var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
-        services.AddEFCoreSqlServer<LydDbContext>(configuration);
+        services.AddEFCoreCustom<AuthDbContext>(configuration);
         services.AddScoped<SeedData>();
         var sp = services.BuildServiceProvider();
-        var context = sp.GetRequiredService<LydDbContext>();
+        var context = sp.GetRequiredService<AuthDbContext>();
         if (context.Database.GetPendingMigrations().Any())
         {
             context.Database.Migrate(); //Ö´ÐÐÇ¨ÒÆ

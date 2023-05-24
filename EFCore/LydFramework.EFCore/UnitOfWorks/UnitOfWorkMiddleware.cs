@@ -24,20 +24,20 @@ namespace LydFramework.EFCore.Middlewares
 
         public async Task InvokeAsync(HttpContext context)
         {
-            var routeData = context.GetRouteData();
-
-            var controllerDuow = routeData.Values["controller"].GetType().GetTypeInfo().GetCustomAttribute<DisabledUnitOfWorkAttribute>();
-            var actionDuow = routeData.Values["action"].GetType().GetTypeInfo().GetCustomAttribute<DisabledUnitOfWorkAttribute>();
+            var metadata = context.Features.Get<IEndpointFeature>()?.Endpoint?.Metadata;
+            var duow = metadata.GetMetadata<DisabledUnitOfWorkAttribute>();
 
             #region 不需要工作单元
-            if(controllerDuow!=null||actionDuow!=null)
+            if (duow != null)
             {
+                await Console.Out.WriteLineAsync("不需要工作单元");
                 await _next.Invoke(context);
             }
             #endregion
             #region 需要工作单元
             else
             {
+                await Console.Out.WriteLineAsync("需要工作单元");
                 //获取服务中多个DbContext
                 var unitOfWorks = context.RequestServices.GetServices<IUnitOfWork>();
                 foreach (var unitOfWork in unitOfWorks)

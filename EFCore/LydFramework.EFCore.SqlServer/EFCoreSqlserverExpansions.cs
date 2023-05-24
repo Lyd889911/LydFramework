@@ -3,24 +3,23 @@ using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LydFramework.EFCore.SqlServer
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class EFCoreSqlserverExpansions
     {
         public static IServiceCollection AddEFCoreSqlServer<TDbContext>
-            (this IServiceCollection services, IConfiguration configuration)
+            (this IServiceCollection services, string connection, string dbversion)
             where TDbContext:DbContext
         {
             services.AddEFCore<TDbContext>(opt =>
             {
 
-                if (configuration["DbVersion"] == "2008" || configuration["DbVersion"] == "2005")
+                if (dbversion == "2008" || dbversion == "2005")
                 {
                     opt.ReplaceService<IQueryTranslationPostprocessorFactory, SqlServer2008QueryTranslationPostprocessorFactory>();
                 }
-                opt.UseSqlServer(configuration["DbConnection"]);
+                opt.UseSqlServer(connection, x => x.MigrationsAssembly("LydFramework.EFCore.SqlServer"));
             });
-            services.AddRepository();
             return services;
         }
     }

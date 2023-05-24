@@ -25,31 +25,26 @@ namespace LydFramework.WebApi.Controllers
 
         //添加用户
         [HttpPost]
-        [UnitOfWork(typeof(AuthDbContext))]
         //[Authorize(Roles = "管理员")]
         public async Task<UserDto> Create(AddUserDto dto) => await _userService.Create(dto);
 
         //修改用户信息
         [HttpPut]
-        [UnitOfWork(typeof(AuthDbContext))]
         [Authorize(Roles = "管理员,普通用户")]
         public async Task<UserDto> Update(UpdateUsetDto dto) => await _userService.Update(dto);
 
         //更新用户角色
         [HttpPatch("role")]
-        [UnitOfWork(typeof(AuthDbContext))]
         [Authorize(Roles = "管理员")]
         public async Task<UserDto> PatchRole(PatchRoleUserDto dto) => await _userService.PatchRole(dto);
 
         //更新用户状态
         [HttpPatch("status")]
-        [UnitOfWork(typeof(AuthDbContext))]
         [Authorize(Roles = "管理员")]
         public async Task<UserDto> PatchStatus(PatchStatusUserDto dto) => await _userService.PatchStatus(dto);
 
         //删除用户
         [HttpDelete("{Id}")]
-        [UnitOfWork(typeof(AuthDbContext))]
         [Authorize(Roles = "管理员")]
         public async Task Delete([FromRoute] long Id) => await _userService.Delete(Id);
     }

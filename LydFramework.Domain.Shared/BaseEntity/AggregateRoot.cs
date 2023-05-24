@@ -8,13 +8,13 @@ namespace LydFramework.Domain.Shared.BaseEntity
 {
     public abstract class AggregateRoot:Entity,IHasCreate, IHasModify, IHasDelete
     {
-        public bool IsDeleted { get; protected set; }
-        public long? DeleteBy { get; protected set; }
-        public DateTime? DeleteTime { get; protected set; }
-        public long? CreateBy { get; protected set; }
-        public DateTime? CreateTime { get; protected set; }
-        public long? ModifyBy { get; protected set; }
-        public DateTime? ModifyTime { get; protected set; }
+        public bool IsDeleted { get; set; }
+        public long? DeleteBy { get; set; }
+        public DateTime? DeleteTime { get; set; }
+        public long? CreateBy { get; set; }
+        public DateTime? CreateTime { get; set; }
+        public long? ModifyBy { get; set; }
+        public DateTime? ModifyTime { get; set; }
 
         protected AggregateRoot()
         {
