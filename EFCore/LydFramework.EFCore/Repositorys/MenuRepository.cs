@@ -1,10 +1,11 @@
 ﻿
 
 using LydFramework.EFCore.DbContexts;
+using LydFramework.Module.Dependencys;
 
 namespace LydFramework.EFCore.Repositorys
 {
-    public class MenuRepository : IMenuRepository
+    public class MenuRepository : IMenuRepository,IScopedDependency
     {
         private readonly AuthDbContext _dbContext;
         public MenuRepository(AuthDbContext dbContext)

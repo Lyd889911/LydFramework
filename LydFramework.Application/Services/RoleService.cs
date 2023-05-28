@@ -4,6 +4,7 @@ using LydFramework.Application.Contracts.Roles;
 using LydFramework.Application.Contracts.Roles.Dtos;
 using LydFramework.Domain.Menus;
 using LydFramework.Domain.Roles;
+using LydFramework.Module.Dependencys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Application.Services
 {
-    public class RoleService : IRoleService
+    public class RoleService : IRoleService, IScopedDependency
     {
         private readonly IRoleRepository _roleRepository;
         private readonly IMenuRepository _menuRepository;

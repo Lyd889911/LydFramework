@@ -2,6 +2,7 @@
 using LydFramework.Application.Contracts.Menus;
 using LydFramework.Application.Contracts.Menus.Dtos;
 using LydFramework.Domain.Menus;
+using LydFramework.Module.Dependencys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Application.Services
 {
-    public class MenuService : IMenuService
+    public class MenuService : IMenuService, IScopedDependency
     {
         private readonly IMenuRepository _menuRepository;
         private readonly IMapper _mapper;

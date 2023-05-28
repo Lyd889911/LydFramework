@@ -1,4 +1,5 @@
 ﻿using LydFramework.EFCore.DbContexts;
+using LydFramework.Module.Dependencys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LydFramework.EFCore.Repositorys
 {
-    public class RoleRepository : IRoleRepository
+    public class RoleRepository : IRoleRepository, IScopedDependency
     {
         private readonly AuthDbContext _dbContext;
         public RoleRepository(AuthDbContext dbContext)

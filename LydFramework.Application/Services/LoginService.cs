@@ -4,6 +4,7 @@ using LydFramework.Application.Contracts.Users;
 using LydFramework.Application.Contracts.Users.Dtos;
 using LydFramework.Domain.Roles;
 using LydFramework.Domain.Users;
+using LydFramework.Module.Dependencys;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -16,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Application.Services
 {
-    public class LoginService : ILoginService
+    public class LoginService : ILoginService,IScopedDependency
     {
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;

@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LydFramework.Module\LydFramework.Module.csproj" />
     <ProjectReference Include="..\LydFramework.Tools\LydFramework.Tools.csproj" />
   </ItemGroup>
 

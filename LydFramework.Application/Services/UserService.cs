@@ -3,6 +3,7 @@ using LydFramework.Application.Contracts.Users;
 using LydFramework.Application.Contracts.Users.Dtos;
 using LydFramework.Domain.Roles;
 using LydFramework.Domain.Users;
+using LydFramework.Module.Dependencys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Application.Services
 {
-    public class UserService : IUserService
+    public class UserService : IUserService, IScopedDependency
     {
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;

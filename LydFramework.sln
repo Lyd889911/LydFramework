@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore.SqlServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore.MySql", "EFCore\LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj", "{163B1F8C-4787-47BB-850A-B73DF646D817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.EFCore.Custom", "EFCore\LydFramework.EFCore.Custom\LydFramework.EFCore.Custom.csproj", "{E981466A-22CA-4B20-9CB4-ED238D563133}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore.Custom", "EFCore\LydFramework.EFCore.Custom\LydFramework.EFCore.Custom.csproj", "{E981466A-22CA-4B20-9CB4-ED238D563133}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Module", "LydFramework.Module\LydFramework.Module.csproj", "{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +85,10 @@ Global
 		{E981466A-22CA-4B20-9CB4-ED238D563133}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E981466A-22CA-4B20-9CB4-ED238D563133}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E981466A-22CA-4B20-9CB4-ED238D563133}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
