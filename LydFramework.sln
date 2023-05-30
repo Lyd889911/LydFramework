@@ -29,7 +29,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore.MySql",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.EFCore.Custom", "EFCore\LydFramework.EFCore.Custom\LydFramework.EFCore.Custom.csproj", "{E981466A-22CA-4B20-9CB4-ED238D563133}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Module", "LydFramework.Module\LydFramework.Module.csproj", "{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Module", "LydFramework.Module\LydFramework.Module.csproj", "{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{702576F2-774B-4000-B560-4B9E60C300CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Redis", "Infrastructure\LydFramework.Redis\LydFramework.Redis.csproj", "{D260A1A9-51E3-443D-AF8F-D6A2D649E17B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +93,10 @@ Global
 		{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2BE0725-57CA-40C8-A3D1-AF4EC726FDB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D260A1A9-51E3-443D-AF8F-D6A2D649E17B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D260A1A9-51E3-443D-AF8F-D6A2D649E17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D260A1A9-51E3-443D-AF8F-D6A2D649E17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D260A1A9-51E3-443D-AF8F-D6A2D649E17B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +107,7 @@ Global
 		{8F904B41-C331-492F-8382-BDBD371C7705} = {915C423D-FC1A-4D52-8ADC-CC4FE43B5538}
 		{163B1F8C-4787-47BB-850A-B73DF646D817} = {915C423D-FC1A-4D52-8ADC-CC4FE43B5538}
 		{E981466A-22CA-4B20-9CB4-ED238D563133} = {915C423D-FC1A-4D52-8ADC-CC4FE43B5538}
+		{D260A1A9-51E3-443D-AF8F-D6A2D649E17B} = {702576F2-774B-4000-B560-4B9E60C300CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD78597E-1BEB-4562-B008-73D2E368D7E7}
