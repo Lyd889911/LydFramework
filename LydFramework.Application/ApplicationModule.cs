@@ -1,5 +1,4 @@
-﻿using LydFramework.EFCore.Custom;
-using LydFramework.Module;
+﻿using LydFramework.Module;
 using LydFramework.Module.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -11,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Application
 {
-    [DependOn(typeof(EFCoreCustomModule))]
     public class ApplicationModule:LydModule
     {
         public override void ConfigureServices(IServiceCollection services)

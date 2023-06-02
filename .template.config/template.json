@@ -1,12 +1,12 @@
 {
-  "author": "lyd", //必须
-  "classifications": [ "Web/WebAPI" ], //必须，这个对应模板的Tags
-  "name": "LydFramework", //必须，这个对应模板的Templates
-  "identity": "LydFrameworkTemplate", //可选，模板的唯一名称
-  "shortName": "lyd", //必须，这个对应模板的Short Name
+  "author": "lyd", 
+  "classifications": [ "Web/WebAPI" ], 
+  "name": "LydFramework", 
+  "identity": "LydFrameworkTemplate", 
+  "shortName": "lyd",
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "sourceName": "LydFramework" // 可选，要替换的名字
+  "sourceName": "LydFramework"
 }

@@ -21,6 +21,18 @@ namespace LydFramework.Redis
             return Task.FromResult(_memory.Get<T>(key));
         }
 
+        public async Task<T> GetOrCreate<T>(string key, Func<T> func)
+        {
+            return await _memory.GetOrCreateAsync(key, (cacheentity) =>
+            {
+                return Task.Run(() =>
+                {
+                    var t = func();
+                    return t;
+                });
+
+            });
+        }
 
         public Task Remove(string key)
         {

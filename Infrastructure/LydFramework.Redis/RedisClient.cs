@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using StackExchange.Redis;
 using Newtonsoft.Json;
+using System.Collections;
 
 namespace LydFramework.Redis
 {
@@ -20,12 +21,20 @@ namespace LydFramework.Redis
             var rv = await _db.StringGetAsync(key);
             return JsonConvert.DeserializeObject<T>(rv.ToString())!;
         }
-        public async Task Set(string key,object value, TimeSpan expiry=default)
+        public async Task Set(string key,object value, TimeSpan expiry=default, CacheDataType dataType = CacheDataType.String)
         {
-            if(expiry==default)
-                await _db.StringSetAsync(key, RedisValue.Unbox(value));
+            if (expiry == default)
+            {
+                switch (dataType)
+                {
+                    case CacheDataType.String: await _db.StringSetAsync(key, RedisValue.Unbox(value));break;
+                    case CacheDataType.List: await _db.ListRightPushAsync(key, RedisValue.Unbox(value));break;
+                }
+            }
             else
+            {
                 await _db.StringSetAsync(key, RedisValue.Unbox(value), expiry);
+            }
         }
         public async Task Remove(string key)
         {
@@ -59,5 +68,16 @@ namespace LydFramework.Redis
             return sqllist;
         }
 
+        public async Task<T> GetOrCreate<T>(string key, Func<T> func)
+        {
+            var t = await Get<T>(key);
+            if (t != null)
+                return t;
+            var t2 = func();
+            if(t2 == null)
+                return t2;
+            await Set(key, t2);
+            return t2;
+        }
     }
 }
