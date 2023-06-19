@@ -1,6 +1,6 @@
 ﻿using LydFramework.Application;
 using LydFramework.Application.Filters;
-using LydFramework.EFCore.Custom;
+using LydFramework.EFCore.MySql;
 using LydFramework.Module;
 using LydFramework.Module.Attributes;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,7 +10,8 @@ using System.Text;
 
 namespace LydFramework.WebApi
 {
-    [DependOn(typeof(ApplicationModule),typeof(EFCoreCustomModule))]
+    [DependOn(typeof(ApplicationModule),
+        typeof(EFCoreMySqlModule))]
     public class WebApiModule:LydModule
     {
         public override void ConfigureServices(IServiceCollection services)

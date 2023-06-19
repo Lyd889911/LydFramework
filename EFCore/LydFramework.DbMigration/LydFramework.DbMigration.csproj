@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -16,6 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LydFramework.EFCore.Custom\LydFramework.EFCore.Custom.csproj" />
+    <ProjectReference Include="..\LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj" />
   </ItemGroup>
 </Project>

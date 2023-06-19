@@ -2,6 +2,7 @@
 using LydFramework.Module.Attributes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,8 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddModuleApplication<TModule>(this IServiceCollection services, bool isAutoInject = true)
         where TModule : ILydModule
         {
+            var logger = services.BuildServiceProvider().GetRequiredService<ILoggerFactory>().CreateLogger<LydModule>();
+            StringBuilder logsb = new StringBuilder();
             //要执行的模块和执行顺序集合
             var types = new List<Tuple<ILydModule, int>>();
             //根模块
@@ -47,8 +50,10 @@ namespace Microsoft.Extensions.DependencyInjection
             //循环执行注册服务
             foreach (var t in lydModules)
             {
+                logsb.AppendLine($"注册：{t.GetType().Name}");
                 t.ConfigureServices(services);
             }
+            logger.LogInformation(logsb.ToString());
         }
 
         /// <summary>
@@ -81,8 +86,13 @@ namespace Microsoft.Extensions.DependencyInjection
             // 通过反射创建一个对象并且回调方法
             ILydModule typeInstance = Activator.CreateInstance(type) as ILydModule;
 
-            if (typeInstance != null) 
+            if (typeInstance != null)
+            {
+                //Console.WriteLine($"{typeInstance.GetType().Name}——{_defaultOrder}");
                 types.Add(new Tuple<ILydModule, int>(typeInstance, _defaultOrder++));
+                
+            }
+                
 
             // 获取DependOn特性注入的模块
             var modules = type.GetCustomAttributes().OfType<DependOnAttribute>()
