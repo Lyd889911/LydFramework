@@ -1,8 +1,10 @@
 ﻿using LydFramework.Application;
 using LydFramework.Application.Filters;
 using LydFramework.EFCore.MySql;
+using LydFramework.Hangfire;
 using LydFramework.Module;
 using LydFramework.Module.Attributes;
+using LydFramework.RabbitMQ;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -11,7 +13,9 @@ using System.Text;
 namespace LydFramework.WebApi
 {
     [DependOn(typeof(ApplicationModule),
-        typeof(EFCoreMySqlModule))]
+        typeof(EFCoreMySqlModule),
+        typeof(HangfireModule),
+        typeof(RabbitMQModule))]
     public class WebApiModule:LydModule
     {
         public override void ConfigureServices(IServiceCollection services)

@@ -49,5 +49,9 @@ namespace LydFramework.Redis
             return Task.CompletedTask;
         }
 
+        public Task Set(string key, object value, TimeSpan expiry = default, Domain.Shared.Enums.CacheDataType dataType = Domain.Shared.Enums.CacheDataType.String)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
