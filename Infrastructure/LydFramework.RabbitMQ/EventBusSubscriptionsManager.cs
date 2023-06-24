@@ -1,4 +1,5 @@
 ﻿using LydFramework.Domain.Shared.Enums;
+using LydFramework.RabbitMQ.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,22 +16,31 @@ namespace LydFramework.RabbitMQ
         /// 事件处理器集合：rabbitmq里面就是队列名
         /// </summary>
         private Dictionary<string, List<IEventHandler>> _handlers;
+        /// <summary>
+        /// key：处理器名字
+        /// value：事件名字集合
+        /// </summary>
+        private Dictionary<string, List<string>> _events;
         public EventBusSubscriptionsManager()
         {
             _handlers = new Dictionary<string, List<IEventHandler>>();
-            //var type = typeof(EventName);
-            //if (type.IsEnum)
-            //{
-            //    FieldInfo[] fieldInfos = type.GetFields();
-            //    foreach (FieldInfo fieldInfo in fieldInfos)
-            //    {
-            //        if (fieldInfo.IsLiteral)
-            //        {
-            //            Console.WriteLine("获取到的值：" + fieldInfo.Name);
-            //            _handlers.Add(fieldInfo.Name, new List<IEventHandler>());
-            //        }
-            //    }
-            //}
+            InitSubscriptions();
+        }
+        /// <summary>
+        /// 初始化订阅事件列表
+        /// </summary>
+        private void InitSubscriptions()
+        {
+            var handlers = Assembly.GetAssembly(typeof(IEventHandler))
+                .GetTypes().Where(t => t.IsAssignableTo(typeof(IEventHandler)) && !t.IsInterface);
+            foreach (var handler in handlers)
+            {
+                var handlerobj = Activator.CreateInstance(handler) as IEventHandler;
+                if (handlerobj != null)
+                {
+                    AddSubscription(handlerobj);
+                }
+            }
         }
         /// <summary>
         /// 添加事件的订阅处理
@@ -38,17 +48,18 @@ namespace LydFramework.RabbitMQ
         /// <param name="eventName"></param>
         /// <param name="handler"></param>
         /// <exception cref="ArgumentException"></exception>
-        public void AddSubscription(string eventName, IEventHandler handler)
+        public void AddSubscription(IEventHandler handler)
         {
-            if (!HasSubscriptionsForEvent(eventName))
+            if (!HasSubscriptionsForEvent(handler.EventName))
             {
-                _handlers.Add(eventName,new List<IEventHandler>());
+                _handlers.Add(handler.EventName, new List<IEventHandler>());
             }
-            if (_handlers[eventName].Any(s => s.EventHandlerName == handler.EventHandlerName))
+            if (_handlers[handler.EventName].Any(s => s.EventHandlerName == handler.EventHandlerName))
             {
-                throw new ArgumentException($"事件:{eventName},已经存在处理器:{handler.GetType().Name}");
+                Console.WriteLine($"事件:{handler.EventName},已经存在处理器:{handler.GetType().Name}");
+                return;
             }
-            _handlers[eventName].Add(handler);
+            _handlers[handler.EventName].Add(handler);
         }
 
         /// <summary>
@@ -58,5 +69,8 @@ namespace LydFramework.RabbitMQ
         /// <returns></returns>
         public bool HasSubscriptionsForEvent(string eventName) 
             => _handlers.ContainsKey(eventName);
+
+        public Dictionary<string, List<IEventHandler>> GetHandlers() => _handlers;
+
     }
 }

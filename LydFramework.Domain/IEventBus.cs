@@ -10,6 +10,6 @@ namespace LydFramework.Domain
 {
     public interface IEventBus
     {
-        public void Publish(EventName routingKey,object data);
+        public void Publish(string routingKey,object data);
     }
 }

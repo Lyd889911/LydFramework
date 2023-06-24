@@ -8,6 +8,6 @@ namespace LydFramework.Application.Contracts.MqTest
 {
     public interface IMqTestService
     {
-        public string Publish(string msg);
+        public string Publish(string eventName,string msg);
     }
 }

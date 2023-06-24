@@ -29,15 +29,15 @@ namespace LydFramework.RabbitMQ
             };
             var rabbitmqConnection = new RabbitMQConnection(factory,logger);
             services.AddSingleton(rabbitmqConnection);
-            var subscriptionManager = new EventBusSubscriptionsManager();
-            services.AddSingleton(subscriptionManager);
+            services.AddSingleton<EventBusSubscriptionsManager>();
             services.AddSingleton<IEventBus, RabbitMQEventBus>();
-        }
-        public void InitEventHandler(EventBusSubscriptionsManager subscriptionManager)
-        {
-            subscriptionManager.AddSubscription("T1", new Print1EventHandler("print1"));
-            subscriptionManager.AddSubscription("T2", new Print2EventHandler("print1"));
-            subscriptionManager.AddSubscription("T3", new Print3EventHandler("print1"));
+
+            //懒加载
+            bool lazy = Convert.ToBoolean(configuration["RabbitMQ:LazyInitialize"]);
+            if (!lazy)
+            {
+                Console.WriteLine("这里会一直执行？");
+            }
         }
     }
 }

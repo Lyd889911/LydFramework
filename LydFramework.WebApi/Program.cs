@@ -1,4 +1,5 @@
 using LydFramework.Application.Middlewares;
+using LydFramework.Domain;
 using LydFramework.EFCore.DbContexts;
 using LydFramework.WebApi;
 using LydFramework.WebApi.Middlewares;
@@ -17,6 +18,7 @@ builder.Services.AddControllers();
 //builder.Services.AddMQ(builder.Configuration);
 //builder.Services.AddWebApi(builder.Configuration);
 builder.Services.AddModuleApplication<WebApiModule>();
+
 #endregion
 
 var app = builder.Build();

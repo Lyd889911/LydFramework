@@ -15,10 +15,10 @@ namespace LydFramework.WebApi.Controllers
             _mqTestService = mqTestService;
         }
 
-        [HttpGet("{msg}")]
-        public string Get([FromRoute]string msg)
+        [HttpGet("{eventName}/{msg}")]
+        public string Get([FromRoute]string eventName, [FromRoute] string msg)
         {
-            return _mqTestService.Publish(msg);
+            return _mqTestService.Publish(eventName,msg);
         }
     }
 }

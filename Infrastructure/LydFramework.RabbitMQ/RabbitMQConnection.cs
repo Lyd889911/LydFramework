@@ -7,13 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace LydFramework.RabbitMQ
 {
     public class RabbitMQConnection
     {
-        private IConnection _connection;
+        private static IConnection _connection;
+        private static IModel _channel;
         private bool _disposed;
         private ILogger<RabbitMQConnection> _logger;
         private IConnectionFactory _connectionFactory;
@@ -31,7 +33,17 @@ namespace LydFramework.RabbitMQ
         {
             get
             {
-                return _connection != null && _connection.IsOpen && !_disposed;
+                return _connection != null && _connection.IsOpen;
+            }
+        }
+        /// <summary>
+        /// 通道是否打开
+        /// </summary>
+        public bool IsChannelOpened
+        {
+            get
+            {
+                return _channel != null && _channel.IsOpen;
             }
         }
 
@@ -39,13 +51,17 @@ namespace LydFramework.RabbitMQ
         /// 创建Model
         /// </summary>
         /// <returns></returns>
-        public IModel CreateModel()
+        public IModel GetChannel()
         {
-            if (!IsConnected)
+            if(IsChannelOpened)//打开就直接返回
+                return _channel;
+            else//没打开就创建
             {
-                throw new InvalidOperationException("RabbitMQ未连接");
+                if (!IsConnected)
+                    TryConnect();
+                _channel = _connection.CreateModel();
+                return _channel;
             }
-            return _connection.CreateModel();
         }
 
         /// <summary>
@@ -77,8 +93,14 @@ namespace LydFramework.RabbitMQ
 
             lock (_lock)
             {
-                _connection = _connectionFactory
-                          .CreateConnection();
+                try
+                {
+                    _connection = _connectionFactory.CreateConnection();
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex.Message);
+                }
 
                 if (IsConnected)
                 {
@@ -96,6 +118,7 @@ namespace LydFramework.RabbitMQ
 
                     return false;
                 }
+
             }
         }
 
@@ -106,10 +129,8 @@ namespace LydFramework.RabbitMQ
         /// <param name="e"></param>
         private void OnConnectionBlocked(object sender, ConnectionBlockedEventArgs e)
         {
-            if (_disposed) return;
 
-            _logger.LogWarning("A RabbitMQ connection is shutdown. Trying to re-connect...");
-
+            _logger.LogWarning("RabbitMQ连接被阻断");
             TryConnect();
         }
 
@@ -120,10 +141,7 @@ namespace LydFramework.RabbitMQ
         /// <param name="e"></param>
         void OnCallbackException(object sender, CallbackExceptionEventArgs e)
         {
-            if (_disposed) return;
-
-            _logger.LogWarning("A RabbitMQ connection throw exception. Trying to re-connect...");
-
+            _logger.LogWarning("RabbitMQ连接异常");
             TryConnect();
         }
 
@@ -134,10 +152,7 @@ namespace LydFramework.RabbitMQ
         /// <param name="reason"></param>
         void OnConnectionShutdown(object sender, ShutdownEventArgs reason)
         {
-            if (_disposed) return;
-
-            _logger.LogWarning("A RabbitMQ connection is on shutdown. Trying to re-connect...");
-
+            _logger.LogWarning("RabbitMQ连接被关闭");
             TryConnect();
         }
     }

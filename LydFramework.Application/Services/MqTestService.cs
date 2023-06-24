@@ -18,9 +18,9 @@ namespace LydFramework.Application.Services
             _eventBus = eventBus;
         }
 
-        public string Publish(string msg)
+        public string Publish(string eventName,string msg)
         {
-            _eventBus.Publish(EventName.T1,msg);
+            _eventBus.Publish(eventName,msg);
             return DateTime.Now.ToString();
         }
     }

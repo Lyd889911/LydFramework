@@ -8,12 +8,10 @@ namespace LydFramework.RabbitMQ.Handlers
 {
     public class Print3EventHandler : IEventHandler
     {
-        public string EventHandlerName { get; set; }
+        public string EventName => "Print";
 
-        public Print3EventHandler(string name)
-        {
-            EventHandlerName = name;
-        }
+        public bool EnableConsume => true;
+
         public Task Handle(string message)
         {
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
