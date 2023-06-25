@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Application.Contracts.MqTest
+namespace LydFramework.Application.Contracts.LydServers.MqTest
 {
     public class TestEventMessage : EventBusMessage
     {

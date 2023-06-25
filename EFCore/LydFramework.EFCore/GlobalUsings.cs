@@ -1,6 +1,11 @@
-﻿global using LydFramework.Domain.Menus;
-global using LydFramework.Domain.Roles;
-global using LydFramework.Domain.Users;
+﻿global using LydFramework.Domain.LydServers.Menus;
+global using LydFramework.Domain.LydServers.Roles;
+global using LydFramework.Domain.LydServers.Users;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using System.Linq.Expressions;
+global using LydFramework.EFCore.LydServers.DbContexts;
+global using LydFramework.Module.Dependencys;
+global using LydFramework.Domain.Shared;
+global using LydFramework.Domain.Shared.BaseEntity;
+global using Microsoft.Extensions.DependencyInjection;

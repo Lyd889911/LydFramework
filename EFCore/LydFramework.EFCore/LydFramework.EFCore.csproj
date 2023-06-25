@@ -22,4 +22,10 @@
     <ProjectReference Include="..\..\LydFramework.Domain\LydFramework.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DbContexts\" />
+    <Folder Include="EntityConfigs\" />
+    <Folder Include="Repositorys\" />
+  </ItemGroup>
+
 </Project>

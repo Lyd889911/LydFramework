@@ -1,18 +1,9 @@
 ﻿using EntityFrameworkCore.Core;
-using LydFramework.EFCore.Cores;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LydFramework.EFCore.Middlewares
+
+namespace LydFramework.EFCore.UnitOfWorks
 {
     public class UnitOfWorkMiddleware
     {

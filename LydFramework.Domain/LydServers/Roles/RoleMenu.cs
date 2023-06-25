@@ -1,4 +1,5 @@
-﻿using LydFramework.Domain.Menus;
+﻿
+using LydFramework.Domain.LydServers.Menus;
 using LydFramework.Domain.Shared.BaseEntity;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Domain.Roles
+namespace LydFramework.Domain.LydServers.Roles
 {
     public class RoleMenu:Entity
     {

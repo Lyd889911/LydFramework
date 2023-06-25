@@ -1,4 +1,4 @@
-﻿namespace LydFramework.Application.Contracts.Users.Dtos
+﻿namespace LydFramework.Application.Contracts.LydServers.Users.Dtos
 {
     public class PatchStatusUserDto
     {

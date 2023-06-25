@@ -1,4 +1,4 @@
-﻿namespace LydFramework.Application.Contracts.Menus.Dtos
+﻿namespace LydFramework.Application.Contracts.LydServers.Menus.Dtos
 {
     public class MenuDto
     {

@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Domain.Users
+namespace LydFramework.Domain.LydServers.Users
 {
     public interface IUserRepository
     {

@@ -1,12 +1,8 @@
-﻿using LydFramework.Domain.Shared.BaseEntity;
-using LydFramework.Domain.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LydFramework.Domain.LydServers.Users;
+using LydFramework.Domain.Shared.BaseEntity;
 
-namespace LydFramework.Domain.Roles
+
+namespace LydFramework.Domain.LydServers.Roles
 {
     public class Role:AggregateRoot
     {

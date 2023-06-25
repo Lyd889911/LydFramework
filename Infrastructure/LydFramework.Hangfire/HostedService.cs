@@ -24,8 +24,7 @@ namespace LydFramework.Hangfire
                 var workerobj = Activator.CreateInstance(worker) as IWorker;
                 if(workerobj==null)
                     continue;
-                RecurringJob.AddOrUpdate(workerobj.WorkerName,
-                    ()=>workerobj.Work(), workerobj.Cron,new RecurringJobOptions() { TimeZone= TimeZoneInfo.Local });
+                RecurringJob.AddOrUpdate(workerobj.WorkerName,()=>workerobj.Work(), workerobj.Cron);
             }
             return Task.CompletedTask;
         }

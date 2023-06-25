@@ -1,15 +1,8 @@
-﻿using LydFramework.Domain.Shared;
-using LydFramework.EFCore.DbContexts;
-using LydFramework.Module;
+﻿using LydFramework.Module;
 using LydFramework.Module.Attributes;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LydFramework.EFCore
 {

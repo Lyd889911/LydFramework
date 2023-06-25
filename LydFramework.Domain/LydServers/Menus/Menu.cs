@@ -1,12 +1,9 @@
-﻿using LydFramework.Domain.Roles;
+﻿
+using LydFramework.Domain.LydServers.Roles;
 using LydFramework.Domain.Shared.BaseEntity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LydFramework.Domain.Menus
+
+namespace LydFramework.Domain.LydServers.Menus
 {
     public class Menu:AggregateRoot
     {

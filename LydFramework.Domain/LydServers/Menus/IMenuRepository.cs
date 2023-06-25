@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Domain.Menus
+namespace LydFramework.Domain.LydServers.Menus
 {
     public interface IMenuRepository
     {

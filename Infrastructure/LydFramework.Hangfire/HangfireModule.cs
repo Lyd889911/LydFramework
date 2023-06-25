@@ -37,7 +37,10 @@ namespace LydFramework.Hangfire
                     });
                 }
 
-                services.AddHangfireServer();
+                services.AddHangfireServer(backgroundJobServerOptions =>
+                {
+                    backgroundJobServerOptions.SchedulePollingInterval = new TimeSpan(0, 0, 10);
+                });
                 services.AddHostedService<HostedService>();
             }
 

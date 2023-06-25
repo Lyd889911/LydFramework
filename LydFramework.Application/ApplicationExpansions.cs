@@ -1,7 +1,4 @@
-﻿using LydFramework.Application.Contracts.Menus;
-using LydFramework.Application.Contracts.Roles;
-using LydFramework.Application.Contracts.Users;
-using LydFramework.Application.Services;
+﻿
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;

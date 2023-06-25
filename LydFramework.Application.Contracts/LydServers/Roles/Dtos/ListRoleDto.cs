@@ -1,4 +1,4 @@
-﻿namespace LydFramework.Application.Contracts.Roles.Dtos
+﻿namespace LydFramework.Application.Contracts.LydServers.Roles.Dtos
 {
     public class ListRoleDto
     {

@@ -1,12 +1,12 @@
 ﻿using LydFramework.Application.Contracts.Dtos;
-using LydFramework.Application.Contracts.Roles.Dtos;
+using LydFramework.Application.Contracts.LydServers.Roles.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Application.Contracts.Roles
+namespace LydFramework.Application.Contracts.LydServers.Roles
 {
     public interface IRoleService
     {

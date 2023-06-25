@@ -1,13 +1,7 @@
 ﻿using EntityFrameworkCore.Core;
-using LydFramework.EFCore.DbContexts;
-using LydFramework.EFCore.Middlewares;
-using LydFramework.EFCore.Repositorys;
+using LydFramework.EFCore.UnitOfWorks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore.Query;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using System.Reflection;
-using System.Text;
+
 
 namespace Microsoft.Extensions.DependencyInjection
 {

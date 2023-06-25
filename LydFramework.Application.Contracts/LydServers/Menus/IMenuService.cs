@@ -1,11 +1,12 @@
-﻿using LydFramework.Application.Contracts.Menus.Dtos;
+﻿
+using LydFramework.Application.Contracts.LydServers.Menus.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Application.Contracts.Menus
+namespace LydFramework.Application.Contracts.LydServers.Menus
 {
     public interface IMenuService
     {
