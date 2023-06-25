@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Domain", "LydF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Tools", "LydFramework.Tools\LydFramework.Tools.csproj", "{63A39F42-F919-4BD7-A072-96C570010301}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Infrastructure", "LydFramework.Infrastructure\LydFramework.Infrastructure.csproj", "{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Domain.Shared", "LydFramework.Domain.Shared\LydFramework.Domain.Shared.csproj", "{D31B396F-A146-4215-968C-08540A5DFB2D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.DbMigration", "EFCore\LydFramework.DbMigration\LydFramework.DbMigration.csproj", "{E1AD0173-13D2-41CD-96EF-4884936372E8}"
@@ -33,9 +31,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Redis", "Infrastructure\LydFramework.Redis\LydFramework.Redis.csproj", "{D260A1A9-51E3-443D-AF8F-D6A2D649E17B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.Hangfire", "Infrastructure\LydFramework.Hangfire\LydFramework.Hangfire.csproj", "{C4431FC6-A0F9-4929-AE3A-23769D054C12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Hangfire", "Infrastructure\LydFramework.Hangfire\LydFramework.Hangfire.csproj", "{C4431FC6-A0F9-4929-AE3A-23769D054C12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.RabbitMQ", "Infrastructure\LydFramework.RabbitMQ\LydFramework.RabbitMQ.csproj", "{BEE13270-840E-4178-9384-BE3787048F81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.RabbitMQ", "Infrastructure\LydFramework.RabbitMQ\LydFramework.RabbitMQ.csproj", "{BEE13270-840E-4178-9384-BE3787048F81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +53,6 @@ Global
 		{63A39F42-F919-4BD7-A072-96C570010301}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63A39F42-F919-4BD7-A072-96C570010301}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63A39F42-F919-4BD7-A072-96C570010301}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9810FC56-3C5C-4F64-B81B-2E09EC5A6D56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D31B396F-A146-4215-968C-08540A5DFB2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D31B396F-A146-4215-968C-08540A5DFB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D31B396F-A146-4215-968C-08540A5DFB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU

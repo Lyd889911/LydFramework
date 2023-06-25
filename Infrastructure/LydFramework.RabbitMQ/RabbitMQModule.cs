@@ -34,10 +34,7 @@ namespace LydFramework.RabbitMQ
 
             //懒加载
             bool lazy = Convert.ToBoolean(configuration["RabbitMQ:LazyInitialize"]);
-            if (!lazy)
-            {
-                Console.WriteLine("这里会一直执行？");
-            }
+
         }
     }
 }

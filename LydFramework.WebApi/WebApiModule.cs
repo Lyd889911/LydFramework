@@ -1,6 +1,6 @@
 ﻿using LydFramework.Application;
 using LydFramework.Application.Filters;
-using LydFramework.EFCore.MySql;
+using LydFramework.EFCore;
 using LydFramework.Hangfire;
 using LydFramework.Module;
 using LydFramework.Module.Attributes;
@@ -13,7 +13,7 @@ using System.Text;
 namespace LydFramework.WebApi
 {
     [DependOn(typeof(ApplicationModule),
-        typeof(EFCoreMySqlModule),
+        typeof(EFCoreModule),
         typeof(HangfireModule),
         typeof(RabbitMQModule))]
     public class WebApiModule:LydModule

@@ -8,7 +8,7 @@ IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(async services =>
     {
         var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
-        services.AddEFCoreMySql<AuthDbContext>(configuration["DbConnection"], configuration["DbVersion"]);
+        //services.AddEFCore<AuthDbContext>(configuration["DbConnection"], configuration["DbVersion"]);
         services.AddScoped<SeedData>();
         var sp = services.BuildServiceProvider();
         var context = sp.GetRequiredService<AuthDbContext>();

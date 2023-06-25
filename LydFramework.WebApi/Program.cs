@@ -7,19 +7,13 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls(builder.Configuration["RunUrl"]);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-#region 添加各个板块的服务
-//builder.Services.AddDomainShared();
-//builder.Services.AddEFCoreCustom<AuthDbContext>(builder.Configuration);
-//builder.Services.AddApplication(builder.Configuration);
-//builder.Services.AddMQ(builder.Configuration);
-//builder.Services.AddWebApi(builder.Configuration);
-builder.Services.AddModuleApplication<WebApiModule>();
 
-#endregion
+builder.Services.AddModuleApplication<WebApiModule>();
 
 var app = builder.Build();
 

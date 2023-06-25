@@ -11,12 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EFCore\LydFramework.EFCore.MySql\LydFramework.EFCore.MySql.csproj" />
+    <ProjectReference Include="..\EFCore\LydFramework.EFCore\LydFramework.EFCore.csproj" />
     <ProjectReference Include="..\Infrastructure\LydFramework.Hangfire\LydFramework.Hangfire.csproj" />
     <ProjectReference Include="..\Infrastructure\LydFramework.RabbitMQ\LydFramework.RabbitMQ.csproj" />
     <ProjectReference Include="..\LydFramework.Application\LydFramework.Application.csproj" />
     <ProjectReference Include="..\LydFramework.Domain\LydFramework.Domain.csproj" />
-    <ProjectReference Include="..\LydFramework.Infrastructure\LydFramework.Infrastructure.csproj" />
     <ProjectReference Include="..\LydFramework.Module\LydFramework.Module.csproj" />
   </ItemGroup>
 
