@@ -1,12 +1,9 @@
-﻿using LydFramework.Domain.Menus;
-using LydFramework.Domain.Roles;
-using LydFramework.Domain.Users;
-using LydFramework.EFCore.DbContexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+
+using LydFramework.Domain.LydServers.Menus;
+using LydFramework.Domain.LydServers.Roles;
+using LydFramework.Domain.LydServers.Users;
+using LydFramework.EFCore.LydServers.DbContexts;
 
 namespace LydFramework.DbMigration
 {
