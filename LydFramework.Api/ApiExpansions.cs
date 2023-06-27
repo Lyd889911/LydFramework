@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class WebApiExpansions
+    public static class ApiExpansions
     {
         public static IServiceCollection AddWebApi(this IServiceCollection services,IConfiguration configuration)
         {

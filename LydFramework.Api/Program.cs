@@ -9,12 +9,12 @@ builder.WebHost.UseUrls(builder.Configuration["RunUrl"]);
 
 builder.Services.AddControllers();
 
-builder.Services.AddModuleApplication<WebApiModule>();
+builder.Services.AddModuleApplication<ApiModule>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseMiddleware<RateLimitMiddleware>();
+//app.UseMiddleware<RateLimitMiddleware>();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<StatusMiddleware>();
 app.UseUnitOfWorkMiddleware();

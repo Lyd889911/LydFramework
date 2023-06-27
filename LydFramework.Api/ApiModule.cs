@@ -16,7 +16,7 @@ namespace LydFramework.WebApi
         typeof(EFCoreModule),
         typeof(HangfireModule),
         typeof(RabbitMQModule))]
-    public class WebApiModule:LydModule
+    public class ApiModule:LydModule
     {
         public override void ConfigureServices(IServiceCollection services)
         {
