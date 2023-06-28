@@ -12,7 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <summary>
         /// 添加Dbcontext和工作单元
         /// </summary>
-        public static IServiceCollection AddEFCore<TDbContext>(this IServiceCollection services,
+        private static IServiceCollection AddEFCore<TDbContext>(this IServiceCollection services,
              Action<DbContextOptionsBuilder>? optionsAction = null,
              ServiceLifetime lifetime = ServiceLifetime.Scoped)
             where TDbContext : DbContext
@@ -56,9 +56,13 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <summary>
         /// 使用自动工作单元中间件
         /// </summary>
-        public static void UseUnitOfWorkMiddleware(this IApplicationBuilder app)
+        public static void UseUnitOfWorkMiddleware(this IApplicationBuilder app,IConfiguration configuration)
         {
-            app.UseMiddleware<UnitOfWorkMiddleware>();
+            bool isenabled = Convert.ToBoolean(configuration["EFCore:IsEnabledUnitOfWork"]);
+            if (isenabled)
+            {
+                app.UseMiddleware<UnitOfWorkMiddleware>();
+            }
         }
     }
 }

@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Redis
+namespace LydFramework.Dapper
 {
-    public class RedisModule:LydModule
+    public class DapperModule:LydModule
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<RedisConnectionFactory>();
-            services.AddScoped<ICacheClient, RedisClient>();
+            services.AddScoped<IDapperClient, DapperClient>();
         }
     }
 }

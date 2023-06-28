@@ -1,6 +1,7 @@
 ﻿using LydFramework.Application.Contracts.Dtos;
 using LydFramework.Application.Contracts.LydServers.Users;
 using LydFramework.Application.Contracts.LydServers.Users.Dtos;
+using LydFramework.EFCore.UnitOfWorks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LydFramework.WebApi.LydServers.Controllers
@@ -16,6 +17,7 @@ namespace LydFramework.WebApi.LydServers.Controllers
         }
 
         [HttpPost]
+        [EFCoreUnitOfWork]
         public async Task<ResultDto> Login(LoginDto dto) => await _loginService.Login(dto);
 
 

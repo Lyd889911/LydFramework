@@ -14,8 +14,11 @@ namespace LydFramework.EFCore
         {
             var sp = services.BuildServiceProvider();
             var config = sp.GetRequiredService<IConfiguration>();
-
-            services.AddEFCore<AuthDbContext>(config);                                                 
+            bool isEnabledDefault = Convert.ToBoolean(config["EFCore:IsEnabledDefault"]);
+            if (isEnabledDefault)
+            {
+                services.AddEFCore<AuthDbContext>(config);
+            }                                 
         }
 
     }

@@ -16,15 +16,16 @@ namespace LydFramework.EFCore.UnitOfWorks
         public async Task InvokeAsync(HttpContext context)
         {
             var metadata = context.Features.Get<IEndpointFeature>()?.Endpoint?.Metadata;
-            var duow = metadata.GetMetadata<DisabledUnitOfWorkAttribute>();
+            var unit = metadata.GetMetadata<EFCoreUnitOfWorkAttribute>();
 
             #region 不需要工作单元
-            if (duow != null)
+            if (unit == null)
             {
                 await Console.Out.WriteLineAsync("不需要工作单元");
                 await _next.Invoke(context);
             }
             #endregion
+
             #region 需要工作单元
             else
             {

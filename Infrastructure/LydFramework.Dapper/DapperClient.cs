@@ -8,54 +8,55 @@ using System.Data;
 
 namespace LydFramework.Dapper
 {
-    public class SqlClient : ISqlClient
+    public class DapperClient : IDapperClient, IDisposable
     {
-        private IDbTransaction? _tran;
-        private IDbConnection? _connection;
+        public IDbTransaction? _tran;
+        public IDbConnection? _connection;
 
-        public SqlClient(IConfiguration configuration)
+        public DapperClient(IConfiguration configuration)
         {
-            InitConnection(configuration["Dapper:DbConnection"]);
+            InitConnAndTran(configuration["Dapper:DbConnection"]);
         }
 
         public async Task<List<T>> List<T>(string sql)
         {
             CheckConnection();
-
-            var ienumerable = await _connection.QueryAsync<T>(sql);
+            var ienumerable = await _connection.QueryAsync<T>(sql,transaction:_tran);
             return ienumerable.ToList();
         }
         public Task<T> Single<T>(string sql)
         {
             CheckConnection();
-
-            return _connection.QuerySingleOrDefaultAsync<T>(sql);
+            return _connection.QuerySingleOrDefaultAsync<T>(sql, transaction: _tran);
         }
         public Task<T> First<T>(string sql)
         {
             CheckConnection();
-
-            return _connection.QueryFirstOrDefaultAsync<T>(sql);
+            return _connection.QueryFirstOrDefaultAsync<T>(sql, transaction: _tran);
         }
         public async Task<int> Execute(string sql)
         {
             CheckConnection();
-
-            int i = 0;
-            if (_tran == null)
-                i = await _connection.ExecuteAsync(sql);
-            else
-                i = await _connection.ExecuteAsync(sql, transaction: _tran);
+            int i = await _connection.ExecuteAsync(sql, transaction: _tran);
             return i;
         }
 
         #region 连接
-        public void InitConnection(string connection)
+        public void InitConnAndTran(string connection,bool enableTran=false)
         {
-            _connection = new SqlConnection(connection);
+            Console.WriteLine($"切换数据库连接：{connection}");
+            try
+            {
+                _connection = new SqlConnection(connection);
+            }
+            catch(Exception ex)
+            {
+
+            }
+
             if (_connection == null)
             {
-                Console.WriteLine($"创建数据库连接失败：{connection}");
+                Console.WriteLine($"切换数据库连接失败：{connection}");
                 return;
             }
             if (_connection.State != ConnectionState.Open)
@@ -63,7 +64,14 @@ namespace LydFramework.Dapper
                 _connection.Close();
                 _connection.Open();
             }
+            TranDispose();
+            if (enableTran)
+            {
+                Console.WriteLine("切换工作单元");
+                BeginTransaction();
+            }
         }
+
         private void CheckConnection()
         {
             if (_connection == null || _connection.State != ConnectionState.Open)
@@ -76,8 +84,9 @@ namespace LydFramework.Dapper
         #region 事务
         public void BeginTransaction()
         {
+            
             CheckConnection();
-
+            Console.WriteLine("开启dapper工作单元");
             _tran = _connection.BeginTransaction();
             if (_tran == null)
                 Console.WriteLine("开启事务失败");
@@ -86,19 +95,22 @@ namespace LydFramework.Dapper
         {
             if (_tran == null)
             {
-                Console.WriteLine("事务未开启，不能提交");
+                //Console.WriteLine("事务未开启，不能提交");
                 return;
             }
+            Console.WriteLine("提交dapper工作单元");
             _tran.Commit();
             TranDispose();
         }
         public void RollbackTransaction()
         {
+            
             if (_tran == null)
             {
-                Console.WriteLine("事务未开启，不能回滚");
+                //Console.WriteLine("事务未开启，不能回滚");
                 return;
             }
+            Console.WriteLine("回滚dapper工作单元");
             _tran.Rollback();
             TranDispose();
         }

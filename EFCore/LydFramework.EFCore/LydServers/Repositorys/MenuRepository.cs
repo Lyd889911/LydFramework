@@ -5,7 +5,7 @@ namespace LydFramework.EFCore.LydServers.Repositorys
     public class MenuRepository : IMenuRepository, IScopedDependency
     {
         private readonly AuthDbContext _dbContext;
-        public MenuRepository(AuthDbContext dbContext)
+        public MenuRepository(AuthDbContext dbContext=null)
         {
             _dbContext = dbContext;
         }

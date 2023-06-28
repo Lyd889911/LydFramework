@@ -1,10 +1,13 @@
 ﻿using LydFramework.Application;
 using LydFramework.Application.Filters;
+using LydFramework.Application.Middlewares;
+using LydFramework.Dapper;
 using LydFramework.EFCore;
 using LydFramework.Hangfire;
 using LydFramework.Module;
 using LydFramework.Module.Attributes;
 using LydFramework.RabbitMQ;
+using LydFramework.Redis;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -15,7 +18,9 @@ namespace LydFramework.WebApi
     [DependOn(typeof(ApplicationModule),
         typeof(EFCoreModule),
         typeof(HangfireModule),
-        typeof(RabbitMQModule))]
+        typeof(RabbitMQModule),
+        typeof(DapperModule),
+        typeof(RedisModule))]
     public class ApiModule:LydModule
     {
         public override void ConfigureServices(IServiceCollection services)
@@ -48,5 +53,6 @@ namespace LydFramework.WebApi
                 };
             });
         }
+
     }
 }

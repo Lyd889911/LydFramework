@@ -17,7 +17,8 @@ var app = builder.Build();
 //app.UseMiddleware<RateLimitMiddleware>();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<StatusMiddleware>();
-app.UseUnitOfWorkMiddleware();
+app.UseUnitOfWorkMiddleware(builder.Configuration);
+app.UseUnitOfWorkDapperMiddleware(builder.Configuration);
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -5,7 +5,7 @@ namespace LydFramework.EFCore.LydServers.Repositorys
     public class UserRepository : IUserRepository, IScopedDependency
     {
         private readonly AuthDbContext _dbContext;
-        public UserRepository(AuthDbContext dbContext)
+        public UserRepository(AuthDbContext dbContext=null)
         {
             _dbContext = dbContext;
         }

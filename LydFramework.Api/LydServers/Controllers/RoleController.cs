@@ -21,15 +21,16 @@ namespace LydFramework.WebApi.LydServers.Controllers
 
         //添加角色
         [HttpPost]
+        [EFCoreUnitOfWork]
         public async Task<RoleDto> Create(AddRoleDto dto) => await _roleService.Create(dto);
 
         //更新角色
         [HttpPut]
+        [EFCoreUnitOfWork]
         public async Task<RoleDto> Update(UpdateRoleDto dto) => await _roleService.Update(dto);
 
         //获取角色列表
         [HttpGet("{Index}/{Size}")]
-        [DisabledUnitOfWork]
         public async Task<PageDto> List([FromRoute] ListRoleDto dto) => await _roleService.List(dto);
     }
 }

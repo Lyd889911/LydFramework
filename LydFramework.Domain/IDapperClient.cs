@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain
 {
-    public interface ISqlClient
+    public interface IDapperClient
     {
         public Task<List<T>> List<T>(string sql);
         public Task<T> Single<T>(string sql);
         public Task<T> First<T>(string sql);
         public Task<int> Execute(string sql);
-        public void InitConnection(string connection);
+        public void InitConnAndTran(string connection, bool enableTran = false);
         public void BeginTransaction();
         public void CommitTransaction();
         public void RollbackTransaction();
-        public void Dispose();
     }
 }
