@@ -10,4 +10,8 @@
     <ProjectReference Include="..\LydFramework.Domain.Shared\LydFramework.Domain.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+
 </Project>

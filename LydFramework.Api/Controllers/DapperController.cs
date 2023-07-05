@@ -1,5 +1,5 @@
 ﻿using LydFramework.Dapper.UnitOfWorks;
-using LydFramework.Domain;
+using LydFramework.Domain.InfrastructureContracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,8 +9,8 @@ namespace LydFramework.Api.Controllers
     [ApiController]
     public class DapperController : ControllerBase
     {
-        private readonly IDapperClient _sqlClient;
-        public DapperController(IDapperClient sqlClient)
+        private readonly ISqlProvider _sqlClient;
+        public DapperController(ISqlProvider sqlClient)
         {
             _sqlClient = sqlClient;
         }

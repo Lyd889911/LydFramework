@@ -1,4 +1,5 @@
 ﻿using LydFramework.Domain;
+using LydFramework.Domain.InfrastructureContracts;
 using LydFramework.Module;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -14,7 +15,7 @@ namespace LydFramework.Redis
         public override void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<RedisConnectionFactory>();
-            services.AddScoped<ICacheClient, RedisClient>();
+            services.AddScoped<IRedisProvider, RedisProvider>();
         }
     }
 }

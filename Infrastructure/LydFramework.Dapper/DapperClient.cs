@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using LydFramework.Domain;
+using LydFramework.Domain.InfrastructureContracts;
 using LydFramework.Domain.Shared.Expections;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +8,7 @@ using System.Data;
 
 namespace LydFramework.Dapper
 {
-    public class DapperClient : IDapperClient, IDisposable
+    public class DapperClient : ISqlProvider, IDisposable
     {
         public IDbTransaction? _tran;
         public IDbConnection? _connection;

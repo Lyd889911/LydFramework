@@ -1,4 +1,4 @@
-﻿using LydFramework.Domain;
+﻿using LydFramework.Domain.InfrastructureContracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,7 +34,7 @@ namespace LydFramework.Dapper.UnitOfWorks
             else
             {
                 await Console.Out.WriteLineAsync("需要Dapper工作单元");
-                var sqlClient = context.RequestServices.GetRequiredService<IDapperClient>();
+                var sqlClient = context.RequestServices.GetRequiredService<ISqlProvider>();
                 sqlClient.BeginTransaction();
                 try
                 {

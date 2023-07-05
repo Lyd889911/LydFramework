@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.RabbitMQ", "In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LydFramework.Dapper", "Infrastructure\LydFramework.Dapper\LydFramework.Dapper.csproj", "{DE5359BE-03CF-43E4-A1E5-58408C884DCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LydFramework.MemoryCache", "Infrastructure\LydFramework.MemoryCache\LydFramework.MemoryCache.csproj", "{599BF26E-D264-4445-A75F-55DBC714DD04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,10 @@ Global
 		{DE5359BE-03CF-43E4-A1E5-58408C884DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE5359BE-03CF-43E4-A1E5-58408C884DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE5359BE-03CF-43E4-A1E5-58408C884DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{599BF26E-D264-4445-A75F-55DBC714DD04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{599BF26E-D264-4445-A75F-55DBC714DD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{599BF26E-D264-4445-A75F-55DBC714DD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{599BF26E-D264-4445-A75F-55DBC714DD04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{C4431FC6-A0F9-4929-AE3A-23769D054C12} = {702576F2-774B-4000-B560-4B9E60C300CF}
 		{BEE13270-840E-4178-9384-BE3787048F81} = {702576F2-774B-4000-B560-4B9E60C300CF}
 		{DE5359BE-03CF-43E4-A1E5-58408C884DCE} = {702576F2-774B-4000-B560-4B9E60C300CF}
+		{599BF26E-D264-4445-A75F-55DBC714DD04} = {702576F2-774B-4000-B560-4B9E60C300CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD78597E-1BEB-4562-B008-73D2E368D7E7}

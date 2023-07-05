@@ -3,15 +3,15 @@ using Microsoft.Extensions.Configuration;
 using StackExchange.Redis;
 using Newtonsoft.Json;
 using System.Collections;
-using LydFramework.Domain.Shared.Enums;
 using Newtonsoft.Json.Linq;
+using LydFramework.Domain.InfrastructureContracts;
 
 namespace LydFramework.Redis
 {
-    public class RedisClient:ICacheClient
+    public class RedisProvider:IRedisProvider
     {
         private readonly RedisConnectionFactory _redisFactory;
-        public RedisClient(RedisConnectionFactory redisFactory)
+        public RedisProvider(RedisConnectionFactory redisFactory)
         {
             _redisFactory = redisFactory;
         }

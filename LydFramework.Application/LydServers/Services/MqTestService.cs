@@ -1,6 +1,5 @@
 ﻿using LydFramework.Application.Contracts.LydServers.MqTest;
-using LydFramework.Domain;
-using LydFramework.Domain.Shared.Enums;
+using LydFramework.Domain.InfrastructureContracts;
 using LydFramework.Module.Dependencys;
 using System;
 using System.Collections.Generic;
@@ -12,8 +11,8 @@ namespace LydFramework.Application.LydServers.Services
 {
     public class MqTestService : IMqTestService, IScopedDependency
     {
-        private readonly IEventBus _eventBus;
-        public MqTestService(IEventBus eventBus)
+        private readonly IEventBusProvider _eventBus;
+        public MqTestService(IEventBusProvider eventBus)
         {
             _eventBus = eventBus;
         }

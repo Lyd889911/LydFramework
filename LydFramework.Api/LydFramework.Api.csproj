@@ -14,6 +14,7 @@
     <ProjectReference Include="..\EFCore\LydFramework.EFCore\LydFramework.EFCore.csproj" />
     <ProjectReference Include="..\Infrastructure\LydFramework.Dapper\LydFramework.Dapper.csproj" />
     <ProjectReference Include="..\Infrastructure\LydFramework.Hangfire\LydFramework.Hangfire.csproj" />
+    <ProjectReference Include="..\Infrastructure\LydFramework.MemoryCache\LydFramework.MemoryCache.csproj" />
     <ProjectReference Include="..\Infrastructure\LydFramework.RabbitMQ\LydFramework.RabbitMQ.csproj" />
     <ProjectReference Include="..\Infrastructure\LydFramework.Redis\LydFramework.Redis.csproj" />
     <ProjectReference Include="..\LydFramework.Application\LydFramework.Application.csproj" />

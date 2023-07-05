@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LydFramework.Module;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace LydFramework.Domain
 {
-    public interface IMqClient
+    public class DomainModule : LydModule
     {
-        void Publish(string key,object message);
     }
 }

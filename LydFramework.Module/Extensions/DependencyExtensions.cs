@@ -28,6 +28,8 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 var interfaces = t.GetDependencyType();
 
+                Console.WriteLine($"注册：【{interfaces?.Name}:{t.Name}】");
+
                 if (interfaces != null)
                 {
                     if (t.IsAssignableTo(typeof(ITransientDependency)))
@@ -90,7 +92,8 @@ namespace Microsoft.Extensions.DependencyInjection
 
             if (exposeServices == null)
             {
-                return type.GetInterfaces().Where(x => x.Name.EndsWith(type.Name))?.FirstOrDefault();
+                //return type.GetInterfaces().Where(x => x.Name.EndsWith(type.Name))?.FirstOrDefault();
+                return type.GetInterfaces().Where(x => type.Name.EndsWith(x.Name.Substring(1)))?.FirstOrDefault();
             }
 
             return type.GetInterfaces().Where(x => x == exposeServices.Type)?.FirstOrDefault();

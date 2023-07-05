@@ -9,15 +9,15 @@ IHost host = Host.CreateDefaultBuilder(args)
     {
         var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
         services.AddEFCore<AuthDbContext>(configuration);
-        services.AddScoped<SeedData>();
-        var sp = services.BuildServiceProvider();
-        var context = sp.GetRequiredService<AuthDbContext>();
-        if (context.Database.GetPendingMigrations().Any())
-        {
-            context.Database.Migrate(); //Ö´ÐÐÇ¨ÒÆ
-        }
-        var seeddata = sp.GetRequiredService<SeedData>();
-        await seeddata.Seed();
+        //services.AddScoped<SeedData>();
+        //var sp = services.BuildServiceProvider();
+        //var context = sp.GetRequiredService<AuthDbContext>();
+        //if (context.Database.GetPendingMigrations().Any())
+        //{
+        //    context.Database.Migrate(); //Ö´ÐÐÇ¨ÒÆ
+        //}
+        //var seeddata = sp.GetRequiredService<SeedData>();
+        //await seeddata.Seed();
     })
     .Build();
 

@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Domain
+namespace LydFramework.Domain.InfrastructureContracts
 {
-    public interface IDapperClient
+    /// <summary>
+    /// Sql提供者：用来执行sql语句，实现DapperProvider
+    /// </summary>
+    public interface ISqlProvider
     {
         public Task<List<T>> List<T>(string sql);
         public Task<T> Single<T>(string sql);

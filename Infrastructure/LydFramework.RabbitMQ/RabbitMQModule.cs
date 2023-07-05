@@ -1,4 +1,4 @@
-﻿using LydFramework.Domain;
+﻿using LydFramework.Domain.InfrastructureContracts;
 using LydFramework.Module;
 using LydFramework.RabbitMQ.Handlers;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +30,7 @@ namespace LydFramework.RabbitMQ
             var rabbitmqConnection = new RabbitMQConnection(factory,logger);
             services.AddSingleton(rabbitmqConnection);
             services.AddSingleton<EventBusSubscriptionsManager>();
-            services.AddSingleton<IEventBus, RabbitMQEventBus>();
+            services.AddSingleton<IEventBusProvider, RabbitMQEventBus>();
 
             //懒加载
             bool lazy = Convert.ToBoolean(configuration["RabbitMQ:LazyInitialize"]);

@@ -1,4 +1,4 @@
-﻿using LydFramework.Domain;
+﻿using LydFramework.Domain.InfrastructureContracts;
 using LydFramework.Module;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -13,7 +13,7 @@ namespace LydFramework.Dapper
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDapperClient, DapperClient>();
+            services.AddScoped<ISqlProvider, DapperClient>();
         }
     }
 }

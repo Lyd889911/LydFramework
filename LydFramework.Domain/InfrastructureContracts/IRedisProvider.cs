@@ -1,13 +1,15 @@
-﻿using LydFramework.Domain.Shared.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LydFramework.Domain
+namespace LydFramework.Domain.InfrastructureContracts
 {
-    public interface ICacheClient
+    /// <summary>
+    /// 缓存提供者，实现RedisProvider
+    /// </summary>
+    public interface IRedisProvider
     {
         /// <summary>
         /// 获取值
@@ -49,5 +51,14 @@ namespace LydFramework.Domain
         /// 移除键
         /// </summary>
         public Task Remove(string key);
+    }
+
+    /// <summary>
+    /// 缓存List数据的方向
+    /// </summary>
+    public enum CacheListDirection
+    {
+        Before,
+        After
     }
 }

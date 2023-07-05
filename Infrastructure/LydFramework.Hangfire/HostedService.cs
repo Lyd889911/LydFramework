@@ -1,4 +1,5 @@
 ﻿using Hangfire;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -15,16 +16,20 @@ namespace LydFramework.Hangfire
     /// </summary>
     public class HostedService : BackgroundService
     {
+        private IEnumerable<IWorker> _workers;
+        private readonly IServiceScope _serviceScope;
+        public HostedService(IServiceScopeFactory serviceScopeFactory)
+        {
+            _serviceScope = serviceScopeFactory.CreateScope();
+        }
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var workers = Assembly.GetAssembly(typeof(IWorker))
-                .GetTypes().Where(t => t.IsAssignableTo(typeof(IWorker)) && !t.IsInterface).ToList();
-            foreach(var worker in workers)
+            _workers = _serviceScope.ServiceProvider.GetServices<IWorker>();
+            foreach (var worker in _workers)
             {
-                var workerobj = Activator.CreateInstance(worker) as IWorker;
-                if(workerobj==null)
-                    continue;
-                RecurringJob.AddOrUpdate(workerobj.WorkerName,()=>workerobj.Work(), workerobj.Cron);
+                var option = new RecurringJobOptions();
+                option.TimeZone = TimeZoneInfo.FindSystemTimeZoneById("China Standard Time");
+                RecurringJob.AddOrUpdate(worker.WorkerName, () => worker.Work(), worker.Cron, option);
             }
             return Task.CompletedTask;
         }

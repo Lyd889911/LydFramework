@@ -4,6 +4,7 @@ using LydFramework.Application.Middlewares;
 using LydFramework.Dapper;
 using LydFramework.EFCore;
 using LydFramework.Hangfire;
+using LydFramework.MemoryCache;
 using LydFramework.Module;
 using LydFramework.Module.Attributes;
 using LydFramework.RabbitMQ;
@@ -20,7 +21,9 @@ namespace LydFramework.WebApi
         typeof(HangfireModule),
         typeof(RabbitMQModule),
         typeof(DapperModule),
-        typeof(RedisModule))]
+        typeof(RedisModule),
+        typeof(MemoryCacheModule)
+        )]
     public class ApiModule:LydModule
     {
         public override void ConfigureServices(IServiceCollection services)
@@ -53,6 +56,5 @@ namespace LydFramework.WebApi
                 };
             });
         }
-
     }
 }

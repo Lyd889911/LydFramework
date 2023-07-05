@@ -1,7 +1,4 @@
-﻿using LydFramework.Domain;
-using LydFramework.Domain.Shared;
-using LydFramework.Domain.Shared.Enums;
-using Microsoft.AspNetCore.Connections;
+﻿using LydFramework.Domain.InfrastructureContracts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -12,7 +9,7 @@ using System.Text;
 
 namespace LydFramework.RabbitMQ
 {
-    public class RabbitMQEventBus: IEventBus
+    public class RabbitMQEventBus: IEventBusProvider
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger _logger;
