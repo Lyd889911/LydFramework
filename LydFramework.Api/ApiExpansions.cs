@@ -4,42 +4,62 @@ using LydFramework.Domain.Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.ServiceProcess;
 using System.Text;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ApiExpansions
     {
-        public static IServiceCollection AddWebApi(this IServiceCollection services,IConfiguration configuration)
+        public static async Task InstallWindowServer(this IHostBuilder host, IConfiguration configuration)
         {
-            services.AddMemoryCache();
+            bool enableWindowsService = Convert.ToBoolean(configuration["Application:EnableWindowsService"]);
+            if (!enableWindowsService||!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                return;
 
-            services.Configure<MvcOptions>(x =>
+            host.UseWindowsService();
+
+            string serviceName = configuration["Application:Name"];
+            string appDescription = configuration["Application:Description"];
+            string appPath = AppContext.BaseDirectory + Assembly.GetEntryAssembly().GetName().Name + ".exe";
+            StringBuilder sc = new StringBuilder();
+
+            // 获取所有的win服务
+            var service = ServiceController.GetServices();
+
+            // 如果已经安装,就卸载重新安装
+            if (service.Any(x => x.ServiceName == serviceName))
             {
-                x.Filters.Add<ResponseFilter>();
-                //x.Filters.Add<UnitOfWorkFilter>();
-            });
+                await Console.Out.WriteLineAsync("已经存在服务，不再重新创建");
+                return;
+            }
 
-            services.AddHttpContextAccessor();
+            #region 启动cmd
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                RedirectStandardOutput = true,// 由调用程序获取输出信息
+                UseShellExecute = false,// 是否使用操作系统shell启动
+                CreateNoWindow = true,// 不显示程序窗口
+                RedirectStandardInput = true,// 接受来自调用程序的输入信息
+                RedirectStandardError = true// 重定向标准错误输出
+            };
+            using var process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+            #endregion
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                    .AddJwtBearer(jwtoption =>
-                    {
-                        string SigningKey = configuration["JwtSecurityKey"];
-                        byte[] keyBytes = Encoding.UTF8.GetBytes(SigningKey);
-                        var secKey = new SymmetricSecurityKey(keyBytes);
-                        jwtoption.TokenValidationParameters = new()
-                        {
-                            ValidateIssuer = false,
-                            ValidateAudience = false,
-                            ValidateLifetime = true,
-                            ValidateIssuerSigningKey = true,
-                            IssuerSigningKey = secKey
-                        };
-                    });
-            return services;
+            sc.Append($"sc create {serviceName} binPath={appPath} start=auto & ");
+            sc.Append($"sc description {serviceName} \"{appDescription}\" & ");
+            sc.Append($"exit");
+            await Console.Out.WriteLineAsync(sc.ToString());
+            await process.StandardInput.WriteLineAsync(sc.ToString());
+
+            await process.WaitForExitAsync();
         }
     }
 }

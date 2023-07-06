@@ -2,8 +2,18 @@ using LydFramework.Application.Middlewares;
 using LydFramework.WebApi;
 using LydFramework.WebApi.Middlewares;
 
-var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.UseUrls(builder.Configuration["RunUrl"]);
+#region 系统配置
+Directory.SetCurrentDirectory(AppContext.BaseDirectory);
+WebApplicationOptions options = new()
+{
+    ContentRootPath = AppContext.BaseDirectory,
+    Args = args
+};
+var builder = WebApplication.CreateBuilder(options);
+//不是Windows系统不会执行的
+await builder.Host.InstallWindowServer(builder.Configuration);
+builder.WebHost.UseUrls(builder.Configuration["Application:RunUrl"]);
+#endregion
 
 // Add services to the container.
 
@@ -13,8 +23,7 @@ builder.Services.AddModuleApplication<ApiModule>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//app.UseMiddleware<RateLimitMiddleware>();
+
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<StatusMiddleware>();
 app.UseUnitOfWorkMiddleware(builder.Configuration);

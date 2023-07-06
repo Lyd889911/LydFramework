@@ -11,6 +11,6 @@ namespace LydFramework.Domain.InfrastructureContracts
         T Get<T>(string key);
         void Set(string key,object value, TimeSpan? expiry = default);
         void Remove(string key);
-        public Task<T> GetORrCreate<T>(string key, Func<T> func, TimeSpan? expiry = default);
+        public Task<T> GetORrCreate<T>(string key, Func<Task<T>> func, TimeSpan? expiry = default)
     }
 }
