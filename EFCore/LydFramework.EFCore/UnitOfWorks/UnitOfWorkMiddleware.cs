@@ -21,7 +21,7 @@ namespace LydFramework.EFCore.UnitOfWorks
             #region 不需要工作单元
             if (unit == null)
             {
-                await Console.Out.WriteLineAsync("不需要工作单元");
+                await Console.Out.WriteLineAsync("不需要EFCore工作单元");
                 await _next.Invoke(context);
             }
             #endregion
@@ -29,7 +29,7 @@ namespace LydFramework.EFCore.UnitOfWorks
             #region 需要工作单元
             else
             {
-                await Console.Out.WriteLineAsync("需要工作单元");
+                await Console.Out.WriteLineAsync("需要EFCore工作单元");
                 //获取服务中多个DbContext
                 var unitOfWorks = context.RequestServices.GetServices<IUnitOfWork>();
                 foreach (var unitOfWork in unitOfWorks)
@@ -46,13 +46,16 @@ namespace LydFramework.EFCore.UnitOfWorks
                         // 提交事务
                         await unitOfWork.CommitTransactionAsync();
                     }
+                    await Console.Out.WriteLineAsync("提交EFCore工作单元");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     foreach (var unitOfWork in unitOfWorks)
                     {
                         await unitOfWork.RollbackTransactionAsync();
                     }
+                    await Console.Out.WriteLineAsync("回滚EFCore工作单元");
+                    throw ex;
                 }
             }
             #endregion
