@@ -4,6 +4,7 @@ using LydFramework.Domain.Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -34,7 +35,7 @@ namespace Microsoft.Extensions.DependencyInjection
             // 如果已经安装,就卸载重新安装
             if (service.Any(x => x.ServiceName == serviceName))
             {
-                await Console.Out.WriteLineAsync("已经存在服务，不再重新创建");
+                Log.Logger.Warning("已经存在该Windows服务，不再重新创建");
                 return;
             }
 
@@ -56,7 +57,7 @@ namespace Microsoft.Extensions.DependencyInjection
             sc.Append($"sc create {serviceName} binPath={appPath} start=auto & ");
             sc.Append($"sc description {serviceName} \"{appDescription}\" & ");
             sc.Append($"exit");
-            await Console.Out.WriteLineAsync(sc.ToString());
+            Log.Logger.Information($"创建Windows服务：{sc.ToString()}");
             await process.StandardInput.WriteLineAsync(sc.ToString());
 
             await process.WaitForExitAsync();

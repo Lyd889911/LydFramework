@@ -10,6 +10,8 @@ WebApplicationOptions options = new()
     Args = args
 };
 var builder = WebApplication.CreateBuilder(options);
+//添加日志
+builder.Host.UseLydSerilog(builder.Configuration);
 //不是Windows系统不会执行的
 await builder.Host.InstallWindowServer(builder.Configuration);
 builder.WebHost.UseUrls(builder.Configuration["Application:RunUrl"]);
@@ -23,6 +25,7 @@ builder.Services.AddModuleApplication<ApiModule>();
 
 var app = builder.Build();
 
+app.UseMiddleware<RequestSerilogMiddleware>();
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseMiddleware<StatusMiddleware>();

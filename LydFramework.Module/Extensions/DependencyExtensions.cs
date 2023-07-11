@@ -2,6 +2,7 @@
 using LydFramework.Module.Attributes;
 using LydFramework.Module.Dependencys;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddAutoInject(this IServiceCollection services, IEnumerable<ILydModule> lydModules)
         {
+            var logger = services.BuildServiceProvider().GetRequiredService<ILoggerFactory>().CreateLogger<LydModule>();
+
             // 加载所有需要注入的程序集（只有引用的模块）
             var allTypes = lydModules.Select(x => x.GetType().Assembly).Distinct()
                 .SelectMany(x => x.GetTypes());
@@ -28,7 +31,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 var interfaces = t.GetDependencyType();
 
-                Console.WriteLine($"注册：【{interfaces?.Name}:{t.Name}】");
+                logger.LogDebug($"Module注册对象：{interfaces?.Name}:{t.Name}");
 
                 if (interfaces != null)
                 {

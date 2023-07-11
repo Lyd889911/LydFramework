@@ -27,7 +27,6 @@ namespace Microsoft.Extensions.DependencyInjection
         where TModule : ILydModule
         {
             var logger = services.BuildServiceProvider().GetRequiredService<ILoggerFactory>().CreateLogger<LydModule>();
-            StringBuilder logsb = new StringBuilder();
             //要执行的模块和执行顺序集合
             var types = new List<Tuple<ILydModule, int>>();
             //根模块
@@ -50,10 +49,9 @@ namespace Microsoft.Extensions.DependencyInjection
             //循环执行注册服务
             foreach (var t in lydModules)
             {
-                logsb.AppendLine($"注册：{t.GetType().Name}");
+                logger.LogDebug($"Module配置服务：{t.GetType().Name}");
                 t.ConfigureServices(services);
             }
-            logger.LogInformation(logsb.ToString());
         }
 
         /// <summary>
