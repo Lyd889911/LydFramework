@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-LydFramework.DbMigration-24832350-b426-4e32-9193-0562eda5de3a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\1.Application\LydFramework.Domain\LydFramework.Domain.csproj" />
+    <ProjectReference Include="..\..\3.Infrastructure\LydFramework.SqlSugar\LydFramework.SqlSugar.csproj" />
+    <ProjectReference Include="..\LydFramework.Common\LydFramework.Common.csproj" />
+  </ItemGroup>
+</Project>

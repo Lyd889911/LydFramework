@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LydFramework.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Extensions.DependencyInjection.RequestSerilogMiddleware">
+            <summary>
+            请求日志中间件
+            </summary>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.ResponseStreamMiddleware">
+            <summary>
+            响应流中间件，所有中间件最前面
+            </summary>
+        </member>
+    </members>
+</doc>

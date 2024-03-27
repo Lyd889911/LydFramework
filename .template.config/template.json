@@ -1,0 +1,12 @@
+{
+  "author": "lyd", 
+  "classifications": [ "Web/WebAPI" ], 
+  "name": "LydFramework", 
+  "identity": "LydFrameworkTemplate", 
+  "shortName": "lyd",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "LydFramework"
+}
